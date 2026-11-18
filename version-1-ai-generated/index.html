@@ -68,10 +68,14 @@
           <img class="entry-image" src="assets/gateway.webp" width="759" height="366" loading="lazy" alt="Concept diagram showing a gateway connected to three service instances.">
           <p class="entry-type">Software systems</p>
           <h3>API gateway load balancing</h3>
-          <p class="entry-intro">Automatically distributing incoming requests across service instances.</p>
+          <p class="entry-intro">Operating a Sub2API gateway on OVH and using upstream health and streaming latency to guide traffic allocation.</p>
           <details>
             <summary><span>Read field note</span><span class="toggle" aria-hidden="true"></span></summary>
-            <div class="detail-copy"><p>A client sends a request to one gateway address. The gateway selects an available upstream instance and forwards the request to it.</p><p>Imagine that one instance starts taking twice as long to respond. Equal request counts can then leave that instance with a longer queue. This is one reason the choice of routing policy matters.</p></div>
+            <div class="detail-copy">
+              <p><strong>When a healthy service feels slow.</strong> An upstream can pass a probe while some users still wait a long time for a streamed reply to begin. Sub2API Console shows probe results alongside request success rates and the 95th percentile of time to first token. That percentile describes the wait near the slow end of observed requests.</p>
+              <p><strong>How traffic moves.</strong> Sub2API forwards each request to an eligible upstream in its group. The console inspects upstream health and manages scheduling eligibility, priority and load factor for the groups under its control. A circuit breaker can take an unhealthy upstream out of rotation.</p>
+              <p><strong>Checking a scheduling change.</strong> The console’s audit trail distinguishes a scheduling change that was sent from one confirmed by reading the setting back. Request-level lookup then shows which upstream actually handled a request. Together they show whether the setting took effect and where traffic went.</p>
+            </div>
           </details>
         </article>
       </div>

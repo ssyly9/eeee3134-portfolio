@@ -72,13 +72,22 @@
         <p class="output js-control" id="drive-status" role="status">Track study · Ready</p>
       </article>
       <article class="project" id="api-gateway">
-        <div class="study network-study" id="network-study" aria-hidden="true"><span class="plate-label">Request → route</span>
-          <div class="network"><div class="source">API</div><div class="routes"><i></i><i></i><i></i></div><div class="servers"><b>A</b><b>B</b><b>C</b></div></div>
+        <div class="study network-study" id="network-study" aria-hidden="true"><span class="plate-label">Group allocation · example requests</span>
+          <div class="network"><div class="source">API</div><div class="routes"><i></i><i></i><i></i></div><div class="servers"><b>A <span>—</span></b><b>B <span>—</span></b><b>C <span>—</span></b></div></div>
         </div>
         <p class="category">Software systems</p><h3>API gateway<br> load balancing</h3>
-        <p>A gateway distributes incoming requests across services. This round-robin example sends each new request to the next service in turn.</p>
-        <button class="study-button js-control" id="route-button" type="button">Route a request <span aria-hidden="true">↗</span></button>
-        <p class="output js-control" id="route-status" role="status">Routing study · Ready</p>
+        <p>On OVH, Sub2API forwards requests to upstream services. Sub2API Console compares probe health, request success and time to first token to guide scheduling within each group.</p>
+        <div class="routing-controls js-control">
+          <label for="route-condition">Upstream B in this simulation</label>
+          <select id="route-condition">
+            <option value="healthy">Healthy · equal shares</option>
+            <option value="slow">Slow first token · reduce share</option>
+            <option value="paused">Paused · exclude from routing</option>
+          </select>
+          <button class="study-button" id="route-button" type="button">Allocate 12 requests <span aria-hidden="true">↗</span></button>
+          <p class="routing-result" id="route-status" role="status">Select a condition and allocate a sample batch.</p>
+        </div>
+        <details class="routing-note"><summary>How to read this study</summary><p>The example assigns relative shares to A, B and C. They start equal. Slowing B halves its example share, and pausing B removes it from the eligible set. Counts are calculated in your browser. In the deployed console, operators can inspect per-group priority and load factor, then check the audit trail for confirmed changes.</p></details>
       </article>
     </div>
   </section>

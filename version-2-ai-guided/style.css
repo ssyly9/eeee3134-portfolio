@@ -180,3 +180,14 @@ h3 {font-size: clamp(25px, 2.3vw, 39px); line-height: 1.04; letter-spacing: -.06
   *, *::before, *::after {scroll-behavior: auto !important; transition-duration: 0s !important; animation-duration: .001ms !important}
 }
 
+.servers b {display:flex;align-items:center;justify-content:space-evenly}
+.servers b span {font-variant-numeric:tabular-nums}
+.servers b.excluded {border-style:dashed;color:#f1d3bd}
+.enhanced .routing-controls {display:grid;justify-items:start;gap:9px;margin-top:auto}
+.routing-controls label,.routing-result,.routing-note {font-size:.82rem;line-height:1.5}
+.routing-controls label {font-weight:650}
+.routing-controls select {font:inherit;font-size:.88rem;border:1px solid #987356;border-radius:.45rem;background:#fff4e5;color:#362b24;padding:.5rem .6rem;max-width:100%}
+.routing-result {margin:0;font-variant-numeric:tabular-nums;color:#564336}
+.routing-note {margin-top:.7rem;color:#564336}
+.routing-note summary {cursor:pointer;text-decoration:underline;text-underline-offset:.18em}
+.routing-note p {margin:.4rem 0 0}
