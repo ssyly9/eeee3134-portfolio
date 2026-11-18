@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f3e9">
+  <meta name="description" content="Engineering field notes by Luoge Yu, an Electrical and Electronic Engineering student at the University of Nottingham Ningbo China. Explore engineering projects and AI coding tutorials.">
+  <title>Engineering Field Notes · Luoge Yu</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <script src="journal.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="masthead" id="overview">
+    <div class="container masthead-inner">
+      <a href="#overview" class="brand" aria-label="Luoge Yu, home"><span class="brand-mark" aria-hidden="true"></span>Luoge Yu</a>
+      <nav id="main-nav" aria-label="Main navigation">
+        <a href="#work">Projects</a>
+        <a href="#tutorials">Tutorials</a>
+        <a href="#about">About</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    <section class="container introduction" aria-labelledby="page-title">
+      <div class="intro-copy">
+        <p class="eyebrow"><span class="ink-line" aria-hidden="true"></span> EEE student portfolio</p>
+        <h1 id="page-title">Engineering<br><em>field notes.</em></h1>
+        <p class="lead">I’m Luoge Yu, an Electrical and Electronic Engineering student at the University of Nottingham Ningbo China. My projects range from measuring rainfall to routing API requests.</p>
+        <a class="button-primary" href="#work">Explore my projects <span aria-hidden="true">↓</span></a>
+      </div>
+      <figure class="featured-plate">
+        <div class="plate-image">
+          <img src="assets/rain-gauge.webp" width="1026" height="842" fetchpriority="high" alt="Exploded concept drawing with a copper-coloured collector above a pivoting bucket.">
+          <span class="plate-tag">Concept illustration</span>
+        </div>
+        <figcaption>
+          <span>Tipping-bucket rain gauge</span>
+          <a href="#rain-gauge">Project note <span aria-hidden="true">↗</span></a>
+        </figcaption>
+      </figure>
+    </section>
+    <section class="container work-section" id="work" aria-labelledby="work-heading">
+      <div class="section-heading"><h2 id="work-heading">Project index<span>.</span></h2></div>
+      <div class="project-grid" id="project-grid">
+        <article class="project-entry" id="rain-gauge">
+          <img class="entry-image" src="assets/bucket.webp" width="759" height="366" loading="lazy" alt="Concept sketch of the pivoting two-sided bucket.">
+          <p class="entry-type">Instrumentation</p>
+          <h3>Tipping-bucket rain gauge</h3>
+          <p class="entry-intro">Turning rainfall into a countable sequence of mechanical tips.</p>
+          <details>
+            <summary><span>Read field note</span><span class="toggle" aria-hidden="true"></span></summary>
+            <div class="detail-copy"><p>Rain enters a collector and fills one side of a pivoting bucket. When the balance shifts, that side empties and the other moves under the collector.</p><p>Calibration gives each tip a rainfall depth. Counting tips gives the accumulated depth, while the time between tips gives a sense of how quickly rain is falling.</p></div>
+          </details>
+        </article>
+        <article class="project-entry" id="line-car">
+          <img class="entry-image" src="assets/line-car.webp" width="759" height="366" loading="lazy" alt="Concept sketch of a small wheeled car over a curved track line.">
+          <p class="entry-type">Embedded control</p>
+          <h3>Arduino line-following car</h3>
+          <p class="entry-intro">Using a line on the ground as a steering reference for a small vehicle.</p>
+          <details>
+            <summary><span>Read field note</span><span class="toggle" aria-hidden="true"></span></summary>
+            <div class="detail-copy"><p>A line follower repeatedly senses where a line lies relative to the vehicle. A sideways offset gives the controller a reason to steer back towards it.</p><p>A bend makes this feedback loop easy to observe. A correction that is too small lets the car drift, while a large correction can send it across the line.</p></div>
+          </details>
+        </article>
+        <article class="project-entry" id="api-gateway">
+          <img class="entry-image" src="assets/gateway.webp" width="759" height="366" loading="lazy" alt="Concept diagram showing a gateway connected to three service instances.">
+          <p class="entry-type">Software systems</p>
+          <h3>API gateway load balancing</h3>
+          <p class="entry-intro">Automatically distributing incoming requests across service instances.</p>
+          <details>
+            <summary><span>Read field note</span><span class="toggle" aria-hidden="true"></span></summary>
+            <div class="detail-copy"><p>A client sends a request to one gateway address. The gateway selects an available upstream instance and forwards the request to it.</p><p>Imagine that one instance starts taking twice as long to respond. Equal request counts can then leave that instance with a longer queue. This is one reason the choice of routing policy matters.</p></div>
+          </details>
+        </article>
+      </div>
+    </section>
+    <section class="tutorial-band" id="tutorials" aria-labelledby="tutorial-title">
+      <div class="container tutorial-layout">
+        <div class="tutorial-head">
+          <h2 id="tutorial-title">AI coding<br><em>tutorials.</em></h2>
+          <p>Two short exercises for turning an AI coding suggestion into something you can check yourself.</p>
+        </div>
+        <div class="tutorial-list">
+          <details class="lesson">
+            <summary><span class="lesson-title"><small>Prompt writing</small>Give a coding assistant a testable brief</span><span class="toggle" aria-hidden="true"></span></summary>
+            <div class="detail-copy">
+              <p>Suppose a function needs to turn a recorded tip count into rainfall depth. Give the assistant the units, one example with a known answer, and a rule for invalid input.</p>
+              <blockquote>Write a Python function that accepts a non-negative whole number of tips and a positive depth per tip in millimetres. Return their product. Reject invalid inputs with ValueError. Include tests for zero tips, three tips at 0.2 mm per tip, and a negative count.</blockquote>
+              <p>Run the generated tests. For the three-tip example, compare the result with 0.6 mm using <code>math.isclose</code> to allow for floating-point rounding.</p>
+            </div>
+          </details>
+          <details class="lesson">
+            <summary><span class="lesson-title"><small>Code review</small>Trace an answer before you trust it</span><span class="toggle" aria-hidden="true"></span></summary>
+            <div class="detail-copy">
+              <p>Ask an assistant for a function that selects the next item in a list, looping back to the beginning. Use <code>["A", "B"]</code> and predict the first four choices, starting at index zero.</p>
+              <p>Trace the index by hand. The expected choices are A, B, A, B. Test a list with one item, then an empty list. Decide how the empty case should be reported and check the generated code against that decision.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+    <section class="container about-section" id="about" aria-labelledby="about-title">
+      <div><p class="eyebrow">About the author</p><h2 id="about-title">Luoge Yu<span>.</span></h2></div>
+      <p>I study Electrical and Electronic Engineering at the University of Nottingham Ningbo China. Alongside my hardware and software projects, I make AI coding tutorials.</p>
+    </section>
+  </main>
+  <footer><div class="container footer-inner"><span>Luoge Yu · Engineering field notes</span><a href="#overview">Back to top <span aria-hidden="true">↑</span></a></div></footer>
+</body>
+</html>

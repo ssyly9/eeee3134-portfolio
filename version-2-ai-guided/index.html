@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6eadb">
+  <meta name="description" content="Luoge Yu’s electrical and electronic engineering portfolio at UNNC. Explore a tipping-bucket rain gauge, an Arduino line-following car, API load balancing and AI coding tutorials.">
+  <title>Luoge Yu — Engineering Portfolio</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="style.css">
+  <script src="portfolio.js" defer></script>
+</head>
+<body data-version="2">
+<a class="skip" href="#main">Skip to content</a>
+<div class="opening" id="overview">
+  <header class="mast shell">
+    <a class="brand" href="#overview" aria-label="Luoge Yu, portfolio home"><span class="brandmark" aria-hidden="true"><i></i><i></i><i></i></span>Luoge Yu</a>
+    <nav id="main-nav" aria-label="Main navigation"><a href="#work">Work</a><a href="#tutorials">Tutorials</a><a href="#about">About</a></nav>
+    <span class="mast-location"><span aria-hidden="true">⌖</span> NINGBO, CN</span>
+  </header>
+  </div>
+  <main id="main" tabindex="-1">
+  <div class="opening hero-bg">
+    <section class="hero shell" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><i class="light" aria-hidden="true"></i>Engineering portfolio</p>
+        <h1 id="hero-title">Luoge<br> Yu<span>.</span></h1>
+        <p class="intro">Electrical and electronic engineering student at the University of Nottingham Ningbo China.</p>
+        <a class="cta" href="#work">Explore my work <span aria-hidden="true">↓</span></a>
+      </div>
+      <figure class="instrument" id="instrument">
+        <div class="stage">
+          <div class="orbits" aria-hidden="true"><i></i><i></i><i></i></div>
+          <div class="object" role="img" aria-label="Copper-coloured concept rendering showing the funnel, rocking bucket and base of a tipping-bucket rain gauge.">
+            <div class="ground-shadow"></div>
+            <img class="base" src="assets/gauge-base.webp" width="800" height="840" alt="">
+            <img class="bucket" src="assets/gauge-bucket.webp" width="800" height="840" alt="">
+            <img class="funnel" src="assets/gauge-funnel.webp" width="800" height="840" alt="">
+          </div>
+          <span class="annotation collector" aria-hidden="true">Collector</span>
+          <span class="annotation pivot" aria-hidden="true">Pivot</span>
+        </div>
+        <figcaption><div><span class="micro">Concept rendering</span><strong>Tipping-bucket rain gauge</strong></div>
+          <button class="view-control js-control" id="assembly" type="button" aria-pressed="false"><span class="layer-icon" aria-hidden="true">◇</span> <span id="assembly-label">Assemble</span></button>
+        </figcaption>
+      </figure>
+    </section>
+</div>
+<div id="portfolio-body">
+  <section class="work shell section" id="work" aria-labelledby="work-title">
+    <div class="section-heading"><div><p class="eyebrow"><span class="dash"></span>Projects</p><h2 id="work-title">Selected work<span>.</span></h2></div>
+      <p>Three things I built, with a hands-on study of the principle behind each one.</p></div>
+    <div class="project-grid" id="project-grid">
+      <article class="project" id="rain-gauge">
+        <div class="study rain-study" id="rain-study" aria-hidden="true">
+          <span class="plate-label">Volume → pulse</span>
+          <div class="rain-grid"></div><div class="rain-axis"></div>
+          <div class="rain-drop"></div><div class="rain-rocker"><img src="assets/gauge-bucket.webp" alt="" width="800" height="840" loading="lazy"></div>
+          
+        </div>
+        <p class="category">Instrumentation</p><h3>Tipping-bucket<br> rain gauge</h3>
+        <p>I built a gauge that counts bucket tips. A collector feeds two cups on a pivot. Each time a cup fills and tips, the counter records a pulse.</p>
+        <button class="study-button js-control" id="tip-button" type="button">Tip the bucket <span aria-hidden="true">↗</span></button>
+        <p class="output js-control" id="tip-status" role="status">Study counter · 0 tips</p>
+      </article>
+      <article class="project" id="line-car">
+        <div class="study car-study" aria-hidden="true"><span class="plate-label">Sense → steer</span><canvas id="car-canvas" width="700" height="480"></canvas></div>
+        <p class="category">Embedded control</p><h3>Arduino<br> line-following car</h3>
+        <p>A sensor reads the line beneath the car. Changing the relative wheel speeds steers the car back towards the track.</p>
+        <button class="study-button js-control" id="drive-button" type="button">Run the track <span aria-hidden="true">↗</span></button>
+        <p class="output js-control" id="drive-status" role="status">Track study · Ready</p>
+      </article>
+      <article class="project" id="api-gateway">
+        <div class="study network-study" id="network-study" aria-hidden="true"><span class="plate-label">Request → route</span>
+          <div class="network"><div class="source">API</div><div class="routes"><i></i><i></i><i></i></div><div class="servers"><b>A</b><b>B</b><b>C</b></div></div>
+        </div>
+        <p class="category">Software systems</p><h3>API gateway<br> load balancing</h3>
+        <p>A gateway distributes incoming requests across services. This round-robin example sends each new request to the next service in turn.</p>
+        <button class="study-button js-control" id="route-button" type="button">Route a request <span aria-hidden="true">↗</span></button>
+        <p class="output js-control" id="route-status" role="status">Routing study · Ready</p>
+      </article>
+    </div>
+  </section>
+  <section id="tutorials" class="tutorials section" aria-labelledby="tutorial-title"><div class="shell teaching">
+    <div><p class="eyebrow"><span class="dash"></span>Teaching</p><h2 id="tutorial-title">AI coding<br>tutorials<span>.</span></h2><p class="lesson-intro">Try a short AI coding exercise. Turn a prompt into a routing function you can check by hand.</p></div>
+    <div class="lessons">
+      <details open><summary><span>01</span>Describe the behaviour<i aria-hidden="true"></i></summary><div class="lesson-text">Give the assistant a small, observable task. Ask for a function that returns A, B and C in order, then starts again at A.</div></details>
+      <details><summary><span>02</span>Trace one decision<i aria-hidden="true"></i></summary><div class="lesson-text">Ask where the function stores its position. Follow the index after each request and check how it wraps back to the first service.</div></details>
+      <details><summary><span>03</span>Test the boundary<i aria-hidden="true"></i></summary><div class="lesson-text">Make four requests to the three services. Compare the output with A, B, C, A. Then try an empty list and decide how the function should respond.</div></details>
+    </div>
+  </div></section>
+  <section class="about section shell" id="about" aria-labelledby="about-title"><div><p class="eyebrow"><span class="dash"></span>About</p><h2 id="about-title">Luoge Yu<span>.</span></h2></div>
+    <p>I study electrical and electronic engineering at UNNC. My projects connect sensing, motion and software, and I share what I learn through AI coding tutorials.</p>
+  </section>
+</div>
+</main>
+<footer class="footer"><div class="shell"><span>Luoge Yu <i>/</i> Engineering portfolio</span><a href="#overview">Back to top ↑</a></div></footer>
+</body>
+</html>
+
+
