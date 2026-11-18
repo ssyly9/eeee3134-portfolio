@@ -17,7 +17,7 @@
       <a href="#overview" class="brand" aria-label="Luoge Yu, home"><span class="brand-mark" aria-hidden="true"></span>Luoge Yu</a>
       <nav id="main-nav" aria-label="Main navigation">
         <a href="#work">Projects</a>
-        <a href="#tutorials">Tutorials</a>
+        <a href="#ai-tutorials">Tutorials</a>
         <a href="#about">About</a>
       </nav>
     </div>
@@ -54,14 +54,22 @@
             <div class="detail-copy"><p>Rain enters a collector and fills one side of a pivoting bucket. When the balance shifts, that side empties and the other moves under the collector.</p><p>Calibration gives each tip a rainfall depth. Counting tips gives the accumulated depth, while the time between tips gives a sense of how quickly rain is falling.</p></div>
           </details>
         </article>
-        <article class="project-entry" id="line-car">
-          <img class="entry-image" src="assets/line-car.webp" width="759" height="366" loading="lazy" alt="Concept sketch of a small wheeled car over a curved track line.">
-          <p class="entry-type">Embedded control</p>
-          <h3>Arduino line-following car</h3>
-          <p class="entry-intro">Using a line on the ground as a steering reference for a small vehicle.</p>
+        <article class="project-entry" id="ai-tutorials">
+          <img class="entry-image" src="assets/codex-lesson-cover.webp" width="1000" height="482" loading="lazy" alt="Cropped Chinese cover of my introductory Codex lesson on how large language models work.">
+          <p class="entry-type">Teaching &amp; publishing</p>
+          <h3>Bilibili AI tutorials</h3>
+          <p class="entry-intro">I write and narrate Chinese-language tutorials as <span lang="zh-CN">於一天</span>. I use worked examples to explain how language models write and what it costs to use them for coding.</p>
+          <a class="channel-link" href="https://space.bilibili.com/3546723368568952">Visit my Bilibili channel <span aria-hidden="true">↗</span></a>
           <details>
             <summary><span>Read field note</span><span class="toggle" aria-hidden="true"></span></summary>
-            <div class="detail-copy"><p>A line follower repeatedly senses where a line lies relative to the vehicle. A sideways offset gives the controller a reason to steer back towards it.</p><p>A bend makes this feedback loop easy to observe. A correction that is too small lets the car drift, while a large correction can send it across the line.</p></div>
+            <div class="detail-copy">
+              <p>In my introductory Codex lesson, I start with “The capital of China is…” and show how each new token becomes part of the context for the next prediction. Later, a failing test gives a coding assistant a concrete way to check its work.</p>
+              <p>For my coding-plan comparisons, I put costs on a common scale per million total tokens. I label estimates and check how much of the input came from cache, since that changes the bill.</p>
+              <ul class="video-links" aria-label="Watch the lessons in Chinese">
+                <li><a href="https://www.bilibili.com/video/BV1XqbJ6SEme/">Watch the Codex introduction</a></li>
+                <li><a href="https://www.bilibili.com/video/BV1UbMm6TEtN/">Watch the August coding-plan review</a></li>
+              </ul>
+            </div>
           </details>
         </article>
         <article class="project-entry" id="api-gateway">
@@ -78,31 +86,6 @@
             </div>
           </details>
         </article>
-      </div>
-    </section>
-    <section class="tutorial-band" id="tutorials" aria-labelledby="tutorial-title">
-      <div class="container tutorial-layout">
-        <div class="tutorial-head">
-          <h2 id="tutorial-title">AI coding<br><em>tutorials.</em></h2>
-          <p>Two short exercises for turning an AI coding suggestion into something you can check yourself.</p>
-        </div>
-        <div class="tutorial-list">
-          <details class="lesson">
-            <summary><span class="lesson-title"><small>Prompt writing</small>Give a coding assistant a testable brief</span><span class="toggle" aria-hidden="true"></span></summary>
-            <div class="detail-copy">
-              <p>Suppose a function needs to turn a recorded tip count into rainfall depth. Give the assistant the units, one example with a known answer, and a rule for invalid input.</p>
-              <blockquote>Write a Python function that accepts a non-negative whole number of tips and a positive depth per tip in millimetres. Return their product. Reject invalid inputs with ValueError. Include tests for zero tips, three tips at 0.2 mm per tip, and a negative count.</blockquote>
-              <p>Run the generated tests. For the three-tip example, compare the result with 0.6 mm using <code>math.isclose</code> to allow for floating-point rounding.</p>
-            </div>
-          </details>
-          <details class="lesson">
-            <summary><span class="lesson-title"><small>Code review</small>Trace an answer before you trust it</span><span class="toggle" aria-hidden="true"></span></summary>
-            <div class="detail-copy">
-              <p>Ask an assistant for a function that selects the next item in a list, looping back to the beginning. Use <code>["A", "B"]</code> and predict the first four choices, starting at index zero.</p>
-              <p>Trace the index by hand. The expected choices are A, B, A, B. Test a list with one item, then an empty list. Decide how the empty case should be reported and check the generated code against that decision.</p>
-            </div>
-          </details>
-        </div>
       </div>
     </section>
     <section class="container about-section" id="about" aria-labelledby="about-title">

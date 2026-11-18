@@ -1,4 +1,4 @@
-const projectIds = new Set(["rain-gauge", "line-car", "api-gateway"]);
+const projectIds = new Set(["rain-gauge", "ai-tutorials", "api-gateway"]);
 
 function openLinkedProject() {
   const id = window.location.hash.slice(1);
@@ -8,7 +8,12 @@ function openLinkedProject() {
 }
 
 window.addEventListener("hashchange", openLinkedProject);
-document.querySelector(".featured-plate a").addEventListener("click", () => {
-  document.querySelector("#rain-gauge details").open = true;
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  const id = link.hash.slice(1);
+  if (projectIds.has(id)) {
+    link.addEventListener("click", () => {
+      document.getElementById(id).querySelector("details").open = true;
+    });
+  }
 });
 openLinkedProject();
