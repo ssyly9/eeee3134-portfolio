@@ -5,11 +5,14 @@ const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
 const instrument = byId("instrument");
 const object = instrument.querySelector(".object");
 const assemblyButton = byId("assembly");
-assemblyButton.addEventListener("click", () => {
-  const assembled = instrument.classList.toggle("is-assembled");
+const explodedButton = byId("exploded");
+function setAssembly(assembled) {
+  instrument.classList.toggle("is-assembled", assembled);
   assemblyButton.setAttribute("aria-pressed", String(assembled));
-  byId("assembly-label").textContent = assembled ? "Explode view" : "Assemble";
-});
+  explodedButton.setAttribute("aria-pressed", String(!assembled));
+}
+assemblyButton.addEventListener("click", () => setAssembly(true));
+explodedButton.addEventListener("click", () => setAssembly(false));
 
 const stage = instrument.querySelector(".stage");
 stage.addEventListener("pointermove", (event) => {
@@ -26,8 +29,10 @@ stage.addEventListener("pointerleave", () => {
 let tips = 0;
 const rain = byId("rain-study");
 const drop = rain.querySelector(".rain-drop");
+const trace = rain.querySelectorAll(".pulse-trace i");
 byId("tip-button").addEventListener("click", () => {
   tips++;
+  if (tips <= trace.length) trace[tips - 1].classList.add("recorded");
   rain.classList.toggle("tipped", tips % 2 === 1);
   drop.classList.remove("fall");
   void drop.offsetWidth;
@@ -70,6 +75,7 @@ byId("route-button").addEventListener("click", () => {
 });
 
 const slides = Array.from(byId("tutorial-preview").querySelectorAll("[data-slide]"));
+slides.forEach((slide, index) => { slide.hidden = index !== 0; });
 const slideCount = byId("slide-count");
 let currentSlide = 0;
 

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="robots" content="noindex">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f7f3e9">
+  <meta name="theme-color" content="#f8f5ed">
   <meta name="description" content="Engineering field notes by Luoge Yu, an Electrical and Electronic Engineering student at the University of Nottingham Ningbo China. Explore engineering projects and AI coding tutorials.">
   <title>Engineering Field Notes · Luoge Yu</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -26,19 +26,18 @@
   <main id="main">
     <section class="container introduction" aria-labelledby="page-title">
       <div class="intro-copy">
-        <p class="eyebrow"><span class="ink-line" aria-hidden="true"></span> EEE student portfolio</p>
+        <p class="eyebrow"><span class="ink-line" aria-hidden="true"></span> Electrical &amp; electronic engineering</p>
         <h1 id="page-title">Engineering<br><em>field notes.</em></h1>
-        <p class="lead">I’m Luoge Yu, an Electrical and Electronic Engineering student at the University of Nottingham Ningbo China. My projects range from measuring rainfall to routing API requests.</p>
-        <a class="button-primary" href="#work">Explore my projects <span aria-hidden="true">↓</span></a>
+        <p class="lead">I’m Luoge Yu, an engineering student in Ningbo. I build instruments, run an API gateway and publish AI coding lessons in Chinese.</p>
+        <a class="button-primary" href="#work">Explore my projects <span class="button-arrow" aria-hidden="true">↓</span></a>
       </div>
       <figure class="featured-plate">
         <div class="plate-image">
           <img src="assets/rain-gauge.webp" width="1026" height="842" fetchpriority="high" alt="Exploded concept drawing with a copper-coloured collector above a pivoting bucket.">
-          <span class="plate-tag">Concept illustration</span>
         </div>
         <figcaption>
-          <span>Tipping-bucket rain gauge</span>
-          <a href="#rain-gauge">Project note <span aria-hidden="true">↗</span></a>
+          <div><span class="plate-tag">Concept illustration</span><span class="plate-title">Tipping-bucket rain gauge</span></div>
+          <a href="#rain-gauge">Read note <span aria-hidden="true">↘</span></a>
         </figcaption>
       </figure>
     </section>
@@ -46,52 +45,60 @@
       <div class="section-heading"><h2 id="work-heading">Project index<span>.</span></h2></div>
       <div class="project-grid" id="project-grid">
         <article class="project-entry" id="rain-gauge">
-          <img class="entry-image" src="assets/bucket.webp" width="759" height="366" loading="lazy" alt="Concept sketch of the pivoting two-sided bucket.">
-          <p class="entry-type">Instrumentation</p>
-          <h3>Tipping-bucket rain gauge</h3>
-          <p class="entry-intro">Turning rainfall into a countable sequence of mechanical tips.</p>
-          <details>
-            <summary><span>Read field note</span><span class="toggle" aria-hidden="true"></span></summary>
-            <div class="detail-copy"><p>Rain enters a collector and fills one side of a pivoting bucket. When the balance shifts, that side empties and the other moves under the collector.</p><p>Calibration gives each tip a rainfall depth. Counting tips gives the accumulated depth, while the time between tips gives a sense of how quickly rain is falling.</p></div>
-          </details>
+          <img class="entry-image" src="assets/bucket.webp" width="759" height="366" alt="Concept sketch of the pivoting two-sided bucket.">
+          <div class="entry-text">
+            <p class="entry-type">Instrumentation</p>
+            <h3>Tipping-bucket rain gauge</h3>
+            <p class="entry-intro">A collector and a pivot turn rainfall into a series of mechanical tips. The count gives the total rainfall depth, and the interval between tips helps estimate the rate.</p>
+            <details>
+              <summary><span>Read field note</span><span class="toggle" aria-hidden="true"></span></summary>
+              <div class="detail-copy"><p><strong>The mechanism.</strong> Rain enters the collector and fills one side of a pivoting bucket. When the balance shifts, that side empties and the other moves under the collector.</p><p><strong>Reading the tips.</strong> Calibration gives each tip a rainfall depth. If the interval between tips shortens, the same amount of rain is collecting in less time.</p></div>
+            </details>
+          </div>
         </article>
         <article class="project-entry" id="ai-tutorials">
-          <img class="entry-image" src="assets/codex-lesson-cover.webp" width="1000" height="482" loading="lazy" alt="Cropped Chinese cover of my introductory Codex lesson on how large language models work.">
-          <p class="entry-type">Teaching &amp; publishing</p>
-          <h3>Bilibili AI tutorials</h3>
-          <p class="entry-intro">I write and narrate Chinese-language tutorials as <span lang="zh-CN">於一天</span>. I use worked examples to explain how language models write and what it costs to use them for coding.</p>
-          <a class="channel-link" href="https://space.bilibili.com/3546723368568952">Visit my Bilibili channel <span aria-hidden="true">↗</span></a>
-          <details>
-            <summary><span>Read field note</span><span class="toggle" aria-hidden="true"></span></summary>
-            <div class="detail-copy">
-              <p>In my introductory Codex lesson, I start with “The capital of China is…” and show how each new token becomes part of the context for the next prediction. Later, a failing test gives a coding assistant a concrete way to check its work.</p>
-              <p>For my coding-plan comparisons, I put costs on a common scale per million total tokens. I label estimates and check how much of the input came from cache, since that changes the bill.</p>
-              <ul class="video-links" aria-label="Watch the lessons in Chinese">
-                <li><a href="https://www.bilibili.com/video/BV1XqbJ6SEme/">Watch the Codex introduction</a></li>
-                <li><a href="https://www.bilibili.com/video/BV1UbMm6TEtN/">Watch the August coding-plan review</a></li>
-              </ul>
-            </div>
-          </details>
+          <span class="anchor-alias" id="tutorials" aria-hidden="true"></span>
+          <img class="entry-image" src="assets/codex-lesson-cover.webp" width="1000" height="482" loading="lazy" alt="Chinese cover of my introductory Codex lesson on how large language models work.">
+          <div class="entry-text">
+            <p class="entry-type">Teaching &amp; publishing</p>
+            <h3>Bilibili AI tutorials</h3>
+            <p class="entry-intro">I write and narrate tutorials in Chinese on my Bilibili channel, <a class="channel-link" href="https://space.bilibili.com/3546723368568952" aria-label="Visit my Bilibili channel, 於一天"><span lang="zh-CN">於一天</span><span aria-hidden="true">↗</span></a>. I use worked examples to explain how language models write and what it costs to use them for coding.</p>
+            <ul class="video-links" aria-label="Watch the lessons in Chinese">
+              <li><a href="https://www.bilibili.com/video/BV1XqbJ6SEme/"><span class="play-mark" aria-hidden="true"></span>Codex introduction <span aria-hidden="true">↗</span></a></li>
+              <li><a href="https://www.bilibili.com/video/BV1UbMm6TEtN/"><span class="play-mark" aria-hidden="true"></span>August coding-plan review <span aria-hidden="true">↗</span></a></li>
+            </ul>
+            <details>
+              <summary><span>Read field note</span><span class="toggle" aria-hidden="true"></span></summary>
+              <div class="detail-copy">
+                <p>In my introductory Codex lesson, I start with “The capital of China is…” and show how each new token becomes part of the context for the next prediction. Later, a failing test gives a coding assistant a concrete way to check its work.</p>
+                <p>For my coding-plan comparisons, I put costs on a common scale per million total tokens. I label estimates and check how much of the input came from cache, since that changes the bill.</p>
+              </div>
+            </details>
+          </div>
         </article>
         <article class="project-entry" id="api-gateway">
           <img class="entry-image" src="assets/gateway.webp" width="759" height="366" loading="lazy" alt="Concept diagram showing a gateway connected to three service instances.">
-          <p class="entry-type">Software systems</p>
-          <h3>API gateway load balancing</h3>
-          <p class="entry-intro">Operating a Sub2API gateway on OVH and using upstream health and streaming latency to guide traffic allocation.</p>
-          <details>
-            <summary><span>Read field note</span><span class="toggle" aria-hidden="true"></span></summary>
-            <div class="detail-copy">
-              <p><strong>When a healthy service feels slow.</strong> An upstream can pass a probe while some users still wait a long time for a streamed reply to begin. Sub2API Console shows probe results alongside request success rates and the 95th percentile of time to first token. That percentile describes the wait near the slow end of observed requests.</p>
-              <p><strong>How traffic moves.</strong> Sub2API forwards each request to an eligible upstream in its group. The console inspects upstream health and manages scheduling eligibility, priority and load factor for the groups under its control. A circuit breaker can take an unhealthy upstream out of rotation.</p>
-              <p><strong>Checking a scheduling change.</strong> The console’s audit trail distinguishes a scheduling change that was sent from one confirmed by reading the setting back. Request-level lookup then shows which upstream actually handled a request. Together they show whether the setting took effect and where traffic went.</p>
-            </div>
-          </details>
+          <div class="entry-text">
+            <p class="entry-type">Software systems</p>
+            <h3>API gateway load balancing</h3>
+            <p class="entry-intro">I operate a Sub2API gateway on OVH. Upstream health and the wait for the first streamed token help me decide where to send traffic.</p>
+            <details>
+              <summary><span>Read field note</span><span class="toggle" aria-hidden="true"></span></summary>
+              <div class="detail-copy">
+                <p><strong>When a healthy service feels slow.</strong> An upstream can pass a probe while some users still wait a long time for a streamed reply to begin. Sub2API Console shows probe results alongside request success rates and the 95th percentile of time to first token. That percentile describes the wait near the slow end of observed requests.</p>
+                <p><strong>How traffic moves.</strong> Sub2API forwards each request to an eligible upstream in its group. The console inspects upstream health and manages scheduling eligibility, priority and load factor for the groups under its control. A circuit breaker can take an unhealthy upstream out of rotation.</p>
+                <p><strong>Checking a scheduling change.</strong> The console’s audit trail distinguishes a scheduling change that was sent from one confirmed by reading the setting back. Request-level lookup then shows which upstream actually handled a request. Together they show whether the setting took effect and where traffic went.</p>
+              </div>
+            </details>
+          </div>
         </article>
       </div>
     </section>
-    <section class="container about-section" id="about" aria-labelledby="about-title">
-      <div><p class="eyebrow">About the author</p><h2 id="about-title">Luoge Yu<span>.</span></h2></div>
-      <p>I study Electrical and Electronic Engineering at the University of Nottingham Ningbo China. Alongside my hardware and software projects, I make AI coding tutorials.</p>
+    <section class="about-section" id="about" aria-labelledby="about-title">
+      <div class="container about-inner">
+        <div><p class="eyebrow">About the author</p><h2 id="about-title">Luoge Yu<span>.</span></h2></div>
+        <p>I study Electrical and Electronic Engineering at the University of Nottingham Ningbo China. Alongside my hardware and software projects, I make AI coding tutorials.</p>
+      </div>
     </section>
   </main>
   <footer><div class="container footer-inner"><span>Luoge Yu · Engineering field notes</span><a href="#overview">Back to top <span aria-hidden="true">↑</span></a></div></footer>

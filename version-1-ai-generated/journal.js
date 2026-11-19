@@ -1,19 +1,13 @@
-const projectIds = new Set(["rain-gauge", "ai-tutorials", "api-gateway"]);
-
-function openLinkedProject() {
-  const id = window.location.hash.slice(1);
-  if (projectIds.has(id)) {
-    document.getElementById(id).querySelector("details").open = true;
+function openLinkedProject(hash) {
+  const target = document.getElementById(hash.slice(1));
+  const project = target?.closest(".project-entry");
+  if (project) {
+    project.querySelector("details").open = true;
   }
 }
 
-window.addEventListener("hashchange", openLinkedProject);
+window.addEventListener("hashchange", () => openLinkedProject(window.location.hash));
 document.querySelectorAll('a[href^="#"]').forEach(link => {
-  const id = link.hash.slice(1);
-  if (projectIds.has(id)) {
-    link.addEventListener("click", () => {
-      document.getElementById(id).querySelector("details").open = true;
-    });
-  }
+  link.addEventListener("click", () => openLinkedProject(link.hash));
 });
-openLinkedProject();
+openLinkedProject(window.location.hash);
