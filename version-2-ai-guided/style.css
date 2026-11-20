@@ -47,7 +47,7 @@ h1, h2, h3, p, figure { margin: 0 }
               radial-gradient(ellipse at 67% 63%, #a8543d 0%, #8a4031 29%, transparent 65%),
               linear-gradient(117deg, #291d21 1%, #4b2827 35%, #71382d 67%, #783c32);
 }
-.hero::before, .rain-study::after, .tutorial-study::after, .network-study::after {
+.hero::before, .rain-study::after, .network-study::after {
   content: ""; position: absolute; inset: 0; pointer-events: none; background-image: url("assets/grain.png");
   opacity: .14; mix-blend-mode: soft-light;
 }
@@ -126,6 +126,12 @@ h3 { font-size: clamp(39px, 3.75vw, 65px); line-height: .99 }
 .plate-label { position: absolute; z-index: 1; top: clamp(17px, 1.75vw, 28px); left: clamp(17px, 1.75vw, 28px); font-size: 9px }
 .rain-study, .network-study { aspect-ratio: 1.72 }
 .rain-study { background: radial-gradient(ellipse at 24% 0%, #f9e9c5, transparent 64%), linear-gradient(145deg, #e4c394 7%, #c89564 66%, #b98457); color: #583921 }
+.rain-figure figcaption { margin-top: 12px }
+.tip-volumes { display: grid; grid-template-columns: 1fr 1fr; margin: 0; padding-block: 11px; border-block: 1px solid var(--rule) }
+.tip-volumes > div + div { border-left: 1px solid var(--rule); padding-left: clamp(12px, 1.4vw, 22px) }
+.tip-volumes dt { color: var(--muted); font-size: 13px; line-height: 1.4 }
+.tip-volumes dd { margin: 3px 0 0; color: var(--ink); font-size: clamp(22px, 2vw, 31px); font-weight: 550; letter-spacing: -.05em; line-height: 1.12 }
+.tip-volumes dd span { color: var(--muted); font-size: 13px; font-weight: 400; letter-spacing: 0; white-space: nowrap }
 .rain-grid { position: absolute; inset: 0; background-image: radial-gradient(#7a4d2c69 .8px, transparent 1px); background-size: 13px 13px; mask-image: linear-gradient(120deg, #000, transparent 60%, #000) }
 .rain-axis { position: absolute; top: 50%; left: 50%; width: 47%; aspect-ratio: 1; transform: translate(-50%, -50%); border: 1px solid #85583065; border-radius: 50%; box-shadow: 0 0 0 8px #f7d9a92b }
 .rain-axis::before { content: ""; position: absolute; inset: -7%; border-radius: inherit; border: 1px dashed #80543252 }
@@ -150,15 +156,16 @@ h3 { font-size: clamp(39px, 3.75vw, 65px); line-height: .99 }
 .tutorial-project .project-copy { grid-column: 1; grid-row: 1 }
 .anchor-alias { position: absolute; top: 0; left: 0; width: 1px; height: 1px }
 .tutorial-study {
-  display: grid; align-items: center; padding: clamp(20px, 2.8vw, 48px) clamp(19px, 3.5vw, 60px);
-  background: radial-gradient(ellipse at 3% -10%, #a47885 0%, transparent 74%), linear-gradient(130deg, #825d69, #754e5a 48%, #53333e);
+  border: 1px solid #bf9c83; background: #fff2dc;
 }
+.tutorial-cover { display: block; position: relative; border-bottom: 1px solid #bf9c83 }
+.tutorial-cover:focus-visible { outline-offset: -5px }
+.tutorial-cover img { display: block; width: 100%; height: auto }
 .slide-deck {
-  position: relative; color: #372834; background: #fff2dc; border: 1px solid #6c4a4b; border-radius: 5px;
-  padding: clamp(17px, 1.9vw, 34px); box-shadow: 3px 4px 0 #c4a98f, 5px 7px 0 #705452, 8px 10px 0 #bfa493, 12px 16px 15px #44283645;
+  color: #372834; padding: clamp(17px, 1.9vw, 28px);
 }
 .slide-series { color: #71424d; font-size: 9px }
-.slide-title { display: block; margin: .32em 0 .36em; max-width: 12ch; font-size: clamp(28px, 2.7vw, 46px); line-height: .97; letter-spacing: -.06em; font-weight: 600 }
+.slide-title { display: block; margin: .32em 0 .36em; font-size: clamp(26px, 2.4vw, 37px); line-height: 1; letter-spacing: -.05em; font-weight: 600 }
 .slide-example { border-block: 1px solid #c8ab9b; padding-block: 9px; font: 13px/1.6 var(--mono) }
 .slide-example b { font-weight: 600; padding: 2px 4px; color: #5c2d3e; background: #f1c9bd; box-decoration-break: clone; -webkit-box-decoration-break: clone }
 #tutorial-preview p { margin-top: 10px; max-width: 46ch; color: #594849; font-size: 14px; line-height: 1.4 }
@@ -199,6 +206,33 @@ html:not(.enhanced) [data-slide] + [data-slide] { border-top: 1px solid #c8ab9b;
 .allocation-inputs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px }
 .routing-controls select { min-height: 43px; min-width: 0; max-width: 100%; border: 1px solid #a18b79; border-radius: 6px; padding: 8px 11px; background: #fff8ed; color: var(--ink); font-size: 13px }
 
+#api-gateway { grid-template-columns: minmax(0, 1.48fr) minmax(0, 1fr); column-gap: clamp(28px, 4.4vw, 72px); row-gap: clamp(18px, 2vw, 32px) }
+.gateway-figure { min-width: 0 }
+.gateway-figure picture, .gateway-figure img { display: block; width: 100% }
+.gateway-figure img { height: auto; border-radius: 10px; background: #282327 }
+.gateway-figure figcaption { text-align: right }
+.gateway-figure a { display: inline-flex; align-items: center; gap: 7px; min-height: 44px; color: #79472f; font-size: 13px; font-weight: 600 }
+.gateway-figure a:hover { text-decoration: underline; text-underline-offset: .2em }
+.gateway-demo { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(185px, .58fr) minmax(0, 1.42fr); align-items: center; gap: clamp(18px, 2.4vw, 38px); padding: clamp(16px, 1.8vw, 24px); border: 1px solid var(--rule); border-radius: 10px; background: #efe6d9 }
+.gateway-demo .network-study { aspect-ratio: auto; height: 138px; background: linear-gradient(125deg, #3e2e2b, #4a352d 65%, #3c302c) }
+.gateway-demo .network { top: 12%; bottom: 12%; left: 12%; right: 11% }
+.gateway-demo .source { width: 51px; max-width: 26%; font-size: 13px; box-shadow: 0 0 0 4px #453833, 0 0 0 5px #b097738a }
+.gateway-demo .routes { flex: 1 }
+.gateway-demo .servers { min-width: 49px }
+.gateway-demo .servers b { background: #493a33; border-color: #aa927c }
+.gateway-demo .servers b.active { background: #f4d39c; border-color: #efd4a7 }
+.gateway-demo-body { min-width: 0 }
+.gateway-demo-body h4 { margin: 0 0 9px; font-size: clamp(20px, 1.65vw, 27px); letter-spacing: -.045em; font-weight: 600 }
+.gateway-demo .routing-note { margin-top: 4px }
+@media (max-width: 1100px) {
+  #api-gateway { grid-template-columns: minmax(0, 1fr); gap: 14px }
+  #api-gateway .project-copy { max-width: 66ch }
+}
+@media (max-width: 600px) {
+  .gateway-demo { grid-template-columns: minmax(0, 1fr); margin-top: 5px }
+  .gateway-demo .network-study { height: 108px }
+}
+
 .about { background: #e9d6c1; border-block: 1px solid #cbb298 }
 .about-inner { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 9%; padding-block: clamp(43px, 5.5vw, 88px) }
 .about .eyebrow { margin-bottom: 13px; color: #76442e }
@@ -216,7 +250,6 @@ html:not(.enhanced) [data-slide] + [data-slide] { border-top: 1px solid #c8ab9b;
   .pivot { top: 62% }
   .project { gap: 4vw }
   .slide-example { font-size: 12px }
-  .tutorial-study { padding: 23px }
 }
 @media (max-width: 740px) {
   .shell { width: calc(100% - 32px) }
@@ -250,7 +283,6 @@ html:not(.enhanced) [data-slide] + [data-slide] { border-top: 1px solid #c8ab9b;
   .category { margin-bottom: 8px }
   h3 { font-size: clamp(32px, 6.5vw, 48px) }
   h3 br { display: none }
-  .tutorial-study { padding: clamp(19px, 4.6vw, 29px) clamp(20px, 7vw, 50px) }
   .slide-deck { padding: clamp(17px, 3.8vw, 25px) }
   .slide-title { max-width: 20ch; font-size: clamp(26px, 5.6vw, 36px) }
   .slide-example { font-size: 13px }

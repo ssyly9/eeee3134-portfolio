@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="486" viewBox="0 0 880 486" role="img" aria-labelledby="diagram-title diagram-desc">
+<title id="diagram-title">Sub2API gateway architecture</title>
+<desc id="diagram-desc">The client sends a request. Sub2API authenticates the API key, identifies its group, selects an eligible upstream and streams the reply through the gateway to the client. Active probes, observed request success and p95 time to first token inform Sub2API Console. Its group controls set scheduling eligibility, priority and load factor. The audit log records writes and readback confirms applied settings.</desc>
+<defs>
+<linearGradient id="board" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox"><stop stop-color="#f8f3e8"/><stop offset=".64" stop-color="#f2ecdc"/><stop offset="1" stop-color="#e8dfca"/></linearGradient>
+<pattern id="grid" width="15" height="15" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".9" fill="#c8bda6"/></pattern>
+<marker id="head-accent" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="4.6" markerHeight="4.6" orient="auto"><path d="M1 1.5 8.5 5 1 8.5" stroke="#883b26" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<marker id="head-control" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="4.6" markerHeight="4.6" orient="auto"><path d="M1 1.5 8.5 5 1 8.5" stroke="#3e5d54" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<marker id="head-stream" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="4.6" markerHeight="4.6" orient="auto"><path d="M1 1.5 8.5 5 1 8.5" stroke="#755c37" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<g id="icon-client" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="2" width="31" height="21" rx="2"/><path d="M1 7h31m-24 5 4 3-4 3m8-1h6M12 27h9m-5-4v4"/></g>
+<g id="icon-auth" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="10" r="6"/><circle cx="8" cy="9" r="1"/><path d="m14 14 11 11 5-5-4-4-3 2-3-3"/></g>
+<g id="icon-scheduler" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="10" width="8" height="8" rx="1"/><path d="M10 14h7m0 0V5h9m-9 9h9m-9 0v9h9"/><circle cx="29" cy="5" r="2.5"/><circle cx="29" cy="14" r="2.5"/><circle cx="29" cy="23" r="2.5"/></g>
+<g id="icon-group" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="29" height="9" rx="2"/><rect x="2" y="15" width="29" height="9" rx="2"/><path d="M6 6.5h6m-6 13h6m11-13h3m-3 13h3"/></g>
+<g id="icon-signals" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M1 17h6l4-11 6 20 5-14 3 5h8"/></g>
+<g id="icon-console" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M1 5h9m6 0h17M1 14h20m6 0h6M1 23h5m6 0h21"/><circle cx="13" cy="5" r="3"/><circle cx="24" cy="14" r="3"/><circle cx="9" cy="23" r="3"/></g>
+<g id="icon-audit" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 1h17l7 7v18H4zM20 2v7h7M8 12h5m-5 4h5m1 4 4 3 7-8"/></g>
+</defs>
+<style>
+text { fill:#332e28; font-family:Arial,sans-serif }
+.display { font:italic 36px Georgia,serif; letter-spacing:-1.7px }
+.folio { fill:#4f493c; font:600 12px Consolas,monospace; letter-spacing:1.6px }
+.section { fill:#883b26; font:600 13px Consolas,monospace; letter-spacing:1.25px }
+.node { font:22px Georgia,serif; letter-spacing:-.6px }
+.effect { fill:#4f493c; font-size:16px } .legend { fill:#4f493c; font-size:15px }
+.wire {fill:none;stroke-linecap:round;stroke-linejoin:round}
+</style>
+<rect width="880" height="486" fill="url(#board)"/>
+<rect x="0" y="0" width="880" height="486" fill="url(#grid)" opacity=".30"/>
+<text x="33" y="33" class="folio">SUB2API  /  GATEWAY</text>
+<text x="33" y="79" class="display" style="font-size:41px">Routing architecture</text>
+<path d="M33 98H847" fill="none" stroke="#d6ccb8" stroke-width="1"/>
+<text x="33" y="124" class="section">REQUEST PATH</text>
+<g><rect x="33" y="140" width="167" height="103" rx="3" fill="#f9f5e9" stroke="#b3a68e" stroke-width="1.15"/>
+<path d="M34 150v-9h9m147 102h9v-9" fill="none" stroke="#883b26" stroke-width="1.7"/>
+<use href="#icon-client" transform="translate(46 152) scale(.83)" color="#883b26"/>
+<text x="46" y="203" class="node">Client</text>
+<text x="46" y="224" class="effect">Send request</text>
+</g>
+<g><rect x="238" y="140" width="169" height="103" rx="3" fill="#f9f5e9" stroke="#b3a68e" stroke-width="1.15"/>
+<path d="M239 150v-9h9m149 102h9v-9" fill="none" stroke="#883b26" stroke-width="1.7"/>
+<use href="#icon-auth" transform="translate(251 152) scale(.83)" color="#883b26"/>
+<text x="251" y="203" class="node">Access check</text>
+<text x="251" y="224" class="effect">Verify key &amp; group</text>
+</g>
+<g><rect x="449" y="140" width="173" height="103" rx="3" fill="#e9d8b9" stroke="#883b26" stroke-width="1.8"/>
+<path d="M450 150v-9h9m153 102h9v-9" fill="none" stroke="#883b26" stroke-width="1.7"/>
+<use href="#icon-scheduler" transform="translate(462 152) scale(.83)" color="#883b26"/>
+<text x="462" y="203" class="node">Scheduler</text>
+<text x="462" y="224" class="effect">Select &amp; forward</text>
+</g>
+<g><rect x="663" y="140" width="184" height="103" rx="3" fill="#f9f5e9" stroke="#b3a68e" stroke-width="1.15"/>
+<path d="M664 150v-9h9m164 102h9v-9" fill="none" stroke="#883b26" stroke-width="1.7"/>
+<use href="#icon-group" transform="translate(676 152) scale(.83)" color="#883b26"/>
+<text x="676" y="203" class="node">Upstream group</text>
+<text x="676" y="224" class="effect">Eligible member</text>
+</g>
+<path class="wire" d="M202 190h33" stroke="#883b26" stroke-width="2.8" marker-end="url(#head-accent)"/>
+<path class="wire" d="M409 190h37" stroke="#883b26" stroke-width="2.8" marker-end="url(#head-accent)"/>
+<path class="wire" d="M624 190h36" stroke="#883b26" stroke-width="2.8" marker-end="url(#head-accent)"/>
+<path class="wire" d="M740 245v19H593v-18" stroke="#755c37" stroke-width="1.8" marker-end="url(#head-stream)"/>
+<path class="wire" d="M515 245v19H110v-18" stroke="#755c37" stroke-width="1.8" marker-end="url(#head-stream)"/>
+<text x="33" y="301" class="section">MONITORING &amp; CONTROL</text>
+<g><rect x="33" y="318" width="192" height="111" rx="3" fill="#f9f5e9" stroke="#b3a68e" stroke-width="1.15"/>
+<path d="M34 328v-9h9m172 110h9v-9" fill="none" stroke="#3e5d54" stroke-width="1.7"/>
+<use href="#icon-audit" transform="translate(46 330) scale(.83)" color="#3e5d54"/>
+<text x="46" y="381" class="node">Audit log</text>
+<text x="46" y="402" class="effect">Record the write</text>
+<text x="46" y="421" class="effect">Read back settings</text>
+</g>
+<g><rect x="274" y="318" width="310" height="111" rx="3" fill="#e9d8b9" stroke="#3e5d54" stroke-width="1.8"/>
+<path d="M275 328v-9h9m290 110h9v-9" fill="none" stroke="#3e5d54" stroke-width="1.7"/>
+<use href="#icon-console" transform="translate(287 330) scale(.83)" color="#3e5d54"/>
+<text x="287" y="381" class="node">Sub2API Console</text>
+<text x="287" y="402" class="effect">Group health &amp; eligibility</text>
+<text x="287" y="421" class="effect">Priority · load factor</text>
+</g>
+<g><rect x="631" y="318" width="216" height="111" rx="3" fill="#f9f5e9" stroke="#b3a68e" stroke-width="1.15"/>
+<path d="M632 328v-9h9m196 110h9v-9" fill="none" stroke="#3e5d54" stroke-width="1.7"/>
+<use href="#icon-signals" transform="translate(644 330) scale(.83)" color="#3e5d54"/>
+<text x="644" y="381" class="node">Health signals</text>
+<text x="644" y="402" class="effect">Active probes · success</text>
+<text x="644" y="421" class="effect">First-token latency (p95)</text>
+</g>
+<path class="wire" d="M813 245v70" stroke="#3e5d54" stroke-width="2.2" stroke-dasharray="4.5 4" marker-end="url(#head-control)"/>
+<path class="wire" d="M629 371h-42" stroke="#3e5d54" stroke-width="2.2" stroke-dasharray="4.5 4" marker-end="url(#head-control)"/>
+<path class="wire" d="M272 371h-44" stroke="#3e5d54" stroke-width="2.2" stroke-dasharray="4.5 4" marker-end="url(#head-control)"/>
+<path class="wire" d="M556 316v-70" stroke="#3e5d54" stroke-width="2.2" stroke-dasharray="4.5 4" marker-end="url(#head-control)"/>
+<path d="M33 447H847" fill="none" stroke="#d6ccb8" stroke-width="1"/>
+<path class="wire" d="M33 467h31" stroke="#883b26" stroke-width="2.8"/>
+<text x="74" y="471" class="legend">Forward request</text>
+<path class="wire" d="M257 467h31" stroke="#755c37" stroke-width="1.8"/>
+<text x="298" y="471" class="legend">Streamed response</text>
+<path class="wire" d="M505 467h31" stroke="#3e5d54" stroke-width="2.2" stroke-dasharray="4.5 4"/>
+<text x="546" y="471" class="legend">Health signals &amp; scheduling</text>
+</svg>

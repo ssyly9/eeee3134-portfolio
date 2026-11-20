@@ -37,7 +37,7 @@
         </div>
         <figcaption>
           <div><span class="plate-tag">Concept illustration</span><span class="plate-title">Tipping-bucket rain gauge</span></div>
-          <a href="#rain-gauge">Read note <span aria-hidden="true">↘</span></a>
+          <a href="#rain-gauge">Calibration note <span aria-hidden="true">↘</span></a>
         </figcaption>
       </figure>
     </section>
@@ -48,42 +48,52 @@
           <img class="entry-image" src="assets/bucket.webp" width="759" height="366" alt="Concept sketch of the pivoting two-sided bucket.">
           <div class="entry-text">
             <p class="entry-type">Instrumentation</p>
-            <h3>Tipping-bucket rain gauge</h3>
-            <p class="entry-intro">A collector and a pivot turn rainfall into a series of mechanical tips. The count gives the total rainfall depth, and the interval between tips helps estimate the rate.</p>
+            <h3>Calibrating a tipping-bucket rain gauge</h3>
+            <p class="entry-intro">The rain gauge I worked on had a nominal volume of 2 mL per tip. At high inflow, the bucket tipped early. I calibrated the gauge with a neural network to account for that change.</p>
             <details>
-              <summary><span>Read field note</span><span class="toggle" aria-hidden="true"></span></summary>
-              <div class="detail-copy"><p><strong>The mechanism.</strong> Rain enters the collector and fills one side of a pivoting bucket. When the balance shifts, that side empties and the other moves under the collector.</p><p><strong>Reading the tips.</strong> Calibration gives each tip a rainfall depth. If the interval between tips shortens, the same amount of rain is collecting in less time.</p></div>
+              <summary><span>Why the bucket tipped early</span><span class="toggle" aria-hidden="true"></span></summary>
+              <div class="detail-copy">
+                <p>Water from the collector fills one side of a pivoting bucket. When the bucket tips, that side empties and the other takes its place. At high inflow, the momentum of the incoming water pushes the bucket over before it holds the full 2 mL.</p>
+                <p>I collected measurements at different inflow rates and used a neural network to fit the effective volume of a single tip, in millilitres. That volume falls nonlinearly as the flow increases. Using a fixed 2 mL for every count would overestimate the flow. Accounting for the change in volume improved my high-flow estimates.</p>
+              </div>
             </details>
           </div>
         </article>
         <article class="project-entry" id="ai-tutorials">
           <span class="anchor-alias" id="tutorials" aria-hidden="true"></span>
-          <img class="entry-image" src="assets/codex-lesson-cover.webp" width="1000" height="482" loading="lazy" alt="Chinese cover of my introductory Codex lesson on how large language models work.">
+          <a href="https://www.bilibili.com/video/BV1XqbJ6SEme/" aria-label="Watch Codex 01 in Chinese on Bilibili"><img class="entry-image" src="assets/bilibili-codex-01-cover.webp" width="1280" height="720" loading="lazy" alt="Published Codex 01 cover, with a white-haired character pointing to a diagram of how an LLM generates text."></a>
           <div class="entry-text">
             <p class="entry-type">Teaching &amp; publishing</p>
             <h3>Bilibili AI tutorials</h3>
-            <p class="entry-intro">I write and narrate tutorials in Chinese on my Bilibili channel, <a class="channel-link" href="https://space.bilibili.com/3546723368568952" aria-label="Visit my Bilibili channel, 於一天"><span lang="zh-CN">於一天</span><span aria-hidden="true">↗</span></a>. I use worked examples to explain how language models write and what it costs to use them for coding.</p>
+            <p class="entry-intro">I wrote and narrated <span lang="zh-CN">《认识LLM，成为能工智人》</span> for my Bilibili channel, <a class="channel-link" href="https://space.bilibili.com/3546723368568952" aria-label="Visit my Bilibili channel, 於一天"><span lang="zh-CN">於一天</span><span aria-hidden="true">↗</span></a>. I start with how a language model finishes one sentence, then ask what changes for a programmer when rewriting code becomes cheap.</p>
             <ul class="video-links" aria-label="Watch the lessons in Chinese">
-              <li><a href="https://www.bilibili.com/video/BV1XqbJ6SEme/"><span class="play-mark" aria-hidden="true"></span>Codex introduction <span aria-hidden="true">↗</span></a></li>
+              <li><a href="https://www.bilibili.com/video/BV1XqbJ6SEme/"><span class="play-mark" aria-hidden="true"></span>Watch Codex 01 · 58 min <span aria-hidden="true">↗</span></a></li>
               <li><a href="https://www.bilibili.com/video/BV1UbMm6TEtN/"><span class="play-mark" aria-hidden="true"></span>August coding-plan review <span aria-hidden="true">↗</span></a></li>
             </ul>
             <details>
-              <summary><span>Read field note</span><span class="toggle" aria-hidden="true"></span></summary>
+              <summary><span>From one token to a working patch</span><span class="toggle" aria-hidden="true"></span></summary>
               <div class="detail-copy">
-                <p>In my introductory Codex lesson, I start with “The capital of China is…” and show how each new token becomes part of the context for the next prediction. Later, a failing test gives a coding assistant a concrete way to check its work.</p>
-                <p>For my coding-plan comparisons, I put costs on a common scale per million total tokens. I label estimates and check how much of the input came from cache, since that changes the bill.</p>
+                <p><strong>Inside the model.</strong> I use “The capital of China is…” to show how a Transformer maps tokens to vectors and uses attention to weigh the preceding tokens. In the example it selects “Beijing”, adds it to the sentence, then predicts punctuation and an end token. A second diagram uses the similar directions from China to Beijing and Japan to Tokyo to illustrate how embeddings can capture a relationship.</p>
+                <p><strong>Inside a project.</strong> Copying a function takes seconds. Adapting it to a different codebase takes judgment about its callers and tests. I show Codex reading a failing test, editing <code>dates.py</code> and running <code>pytest</code> again. The failure message guides the next edit, and a developer checks whether the fix preserves the public API.</p>
+                <p><strong>The wider view.</strong> A network can distribute the same article to a thousand readers. A model can rewrite it for one reader’s question. I call this the automation of symbolic production and trace it back through earlier shifts in what machines can reproduce. The lesson closes with the role of the person who sets the task and checks the result.</p>
               </div>
             </details>
           </div>
         </article>
         <article class="project-entry" id="api-gateway">
-          <img class="entry-image" src="assets/gateway.webp" width="759" height="366" loading="lazy" alt="Concept diagram showing a gateway connected to three service instances.">
+          <figure class="gateway-figure">
+            <picture>
+              <source media="(max-width: 740px)" srcset="assets/gateway-architecture-mobile.svg" width="440" height="620">
+              <img src="assets/gateway-architecture.svg" width="880" height="486" loading="lazy" alt="Request path from client through API key and group checks to the Sub2API scheduler and an eligible upstream. The reply streams back through the gateway. Active probes, request success and p95 time to first token inform Console settings for eligibility, priority and load factor. The audit log records changes and readback confirms them.">
+            </picture>
+            <figcaption><a href="assets/gateway-architecture.svg">Open full-size diagram <span aria-hidden="true">↗</span></a></figcaption>
+          </figure>
           <div class="entry-text">
             <p class="entry-type">Software systems</p>
             <h3>API gateway load balancing</h3>
-            <p class="entry-intro">I operate a Sub2API gateway on OVH. Upstream health and the wait for the first streamed token help me decide where to send traffic.</p>
+            <p class="entry-intro">I operate a Sub2API gateway on OVH. Each API key identifies the group a client can use. The scheduler picks an eligible upstream and the gateway streams its reply back to the client.</p>
             <details>
-              <summary><span>Read field note</span><span class="toggle" aria-hidden="true"></span></summary>
+              <summary><span>How I check a routing change</span><span class="toggle" aria-hidden="true"></span></summary>
               <div class="detail-copy">
                 <p><strong>When a healthy service feels slow.</strong> An upstream can pass a probe while some users still wait a long time for a streamed reply to begin. Sub2API Console shows probe results alongside request success rates and the 95th percentile of time to first token. That percentile describes the wait near the slow end of observed requests.</p>
                 <p><strong>How traffic moves.</strong> Sub2API forwards each request to an eligible upstream in its group. The console inspects upstream health and manages scheduling eligibility, priority and load factor for the groups under its control. A circuit breaker can take an unhealthy upstream out of rotation.</p>

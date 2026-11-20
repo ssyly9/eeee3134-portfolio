@@ -59,47 +59,57 @@
         </div>
         <div class="project-grid" id="project-grid">
           <article class="project" id="rain-gauge" aria-labelledby="rain-title">
-            <div class="study rain-study" id="rain-study" aria-hidden="true">
-              <span class="plate-label">Volume → pulse</span>
-              <div class="rain-grid"></div>
-              <div class="rain-axis"></div>
-              <div class="rain-drop"></div>
-              <div class="rain-rocker"><img src="assets/gauge-bucket.webp" alt="" width="800" height="840" loading="lazy"></div>
-              <div class="pulse-trace"><i></i><i></i><i></i><i></i></div>
-            </div>
-            <div class="project-copy">
-              <p class="category"><i aria-hidden="true"></i>Instrumentation</p>
-              <h3 id="rain-title">Tipping-bucket<br> rain gauge</h3>
-              <p>I built a gauge that counts bucket tips. A collector feeds two cups on a pivot. Each time a cup fills and tips, the counter records a pulse.</p>
-              <div class="demo-actions js-control">
+            <figure class="rain-figure">
+              <div class="study rain-study" id="rain-study" aria-hidden="true">
+                <span class="plate-label">One tip → one pulse</span>
+                <div class="rain-grid"></div>
+                <div class="rain-axis"></div>
+                <div class="rain-drop"></div>
+                <div class="rain-rocker"><img src="assets/gauge-bucket.webp" alt="" width="800" height="840" loading="lazy"></div>
+                <div class="pulse-trace"><i></i><i></i><i></i><i></i></div>
+              </div>
+              <figcaption class="demo-actions js-control">
                 <button class="study-button" id="tip-button" type="button">Tip the bucket <span aria-hidden="true">↺</span></button>
                 <p class="output" id="tip-status" role="status">Study counter · 0 tips</p>
-              </div>
+              </figcaption>
+            </figure>
+            <div class="project-copy">
+              <p class="category"><i aria-hidden="true"></i>Instrumentation</p>
+              <h3 id="rain-title">Rain gauge<br> calibration</h3>
+              <p>My gauge records one pulse each time the bucket tips. At high inflow, the momentum of the incoming water tips the bucket early. Using the nominal volume for every pulse overestimates the flow.</p>
+              <dl class="tip-volumes">
+                <div><dt>Nominal volume</dt><dd>2 mL <span>per tip</span></dd></div>
+                <div><dt>At high inflow</dt><dd>&lt; 2 mL <span>per tip</span></dd></div>
+              </dl>
+              <p>I collected samples at different flow rates and used a neural network to fit the effective millilitres per tip. Flow is the tip rate (tips/s) multiplied by the effective volume (mL/tip). This calibration accounted for the nonlinear loss of volume per tip and improved my high-flow estimates.</p>
             </div>
           </article>
 
           <article class="project tutorial-project" id="ai-tutorials" aria-labelledby="tutorial-title">
             <span class="anchor-alias" id="tutorials" aria-hidden="true"></span>
-            <div class="study tutorial-study" role="group" aria-label="English preview of my tutorial slides">
+            <div class="study tutorial-study" role="group" aria-label="Published cover and English preview of Codex 01">
+              <a class="tutorial-cover" href="https://www.bilibili.com/video/BV1XqbJ6SEme/" aria-label="Watch Codex 01 in Chinese on Bilibili">
+                <img src="assets/bilibili-codex-01-cover.webp" width="1280" height="720" loading="lazy" alt="Published Codex 01 cover, with a white-haired character pointing to a diagram of how an LLM generates text.">
+              </a>
               <div class="slide-deck">
                 <div id="tutorial-preview" aria-live="polite" aria-atomic="true">
                   <div data-slide role="group" aria-label="Slide 1 of 3">
-                    <span class="slide-series">Codex · Model basics</span>
-                    <strong class="slide-title">Predict the next token</strong>
+                    <span class="slide-series">Inside the model</span>
+                    <strong class="slide-title">Predict one token</strong>
                     <div class="slide-example">The capital of China is <b>Beijing</b></div>
-                    <p>The model appends each token to its context before predicting the next.</p>
+                    <p>The model represents tokens as vectors. Attention weighs earlier tokens to score possible continuations. Once “Beijing” joins the context, the model can predict punctuation.</p>
                   </div>
                   <div data-slide role="group" aria-label="Slide 2 of 3">
-                    <span class="slide-series">Codex · Writing a brief</span>
-                    <strong class="slide-title">Write a testable brief</strong>
-                    <div class="slide-example">A failing test <span aria-hidden="true">→</span> <b>a patch</b></div>
-                    <p>Ask for a fix that preserves the public API. Run the tests to check the patch.</p>
+                    <span class="slide-series">Inside a coding session</span>
+                    <strong class="slide-title">Check the patch</strong>
+                    <div class="slide-example">Failing test <span aria-hidden="true">→</span> edit <b>dates.py</b> <span aria-hidden="true">→</span> rerun</div>
+                    <p>A prompt specifies the public API to preserve. A reusable skill records the checks. The test runner returns failure messages so Codex can revise its edit.</p>
                   </div>
                   <div data-slide role="group" aria-label="Slide 3 of 3">
-                    <span class="slide-series">Coding plans · Comparing cost</span>
-                    <strong class="slide-title">Price a million tokens</strong>
-                    <div class="slide-example">Bill ÷ <b>millions of tokens</b></div>
-                    <p>Use total input and output tokens. Record the cache-hit rate to explain price differences.</p>
+                    <span class="slide-series">Across projects</span>
+                    <strong class="slide-title">What gets cheaper?</strong>
+                    <div class="slide-example">Existing code <span aria-hidden="true">→</span> <b>a new setting</b></div>
+                    <p>A function is easy to copy. Rewriting it for a new codebase costs time. I argue that models can lower that cost while developers choose the constraints and verify the result.</p>
                   </div>
                 </div>
                 <div class="slide-controls js-control" role="group" aria-label="Slide navigation">
@@ -112,43 +122,58 @@
             <div class="project-copy">
               <p class="category"><i aria-hidden="true"></i>Teaching &amp; publishing</p>
               <h3 id="tutorial-title">Bilibili AI<br> tutorials</h3>
-              <p>I publish as <span lang="zh-CN">於一天</span> on Bilibili. My Chinese-language videos explain how large language models generate text and how to compare the cost of AI coding tools.</p>
+              <p>I wrote and narrated <span lang="zh-CN">《认识 LLM，成为能工智人》</span> as <span lang="zh-CN">於一天</span>. At the scale of one sentence, vectors and attention help explain the next-token prediction. At the scale of work, I ask what happens when a machine can adapt an article or a program to new conditions, and how people verify the result.</p>
               <a class="channel-link" href="https://space.bilibili.com/3546723368568952">Visit my Bilibili channel <span aria-hidden="true">↗</span></a>
               <details class="routing-note video-note"><summary>Watch the lessons in Chinese</summary>
-                <ul><li><a href="https://www.bilibili.com/video/BV1XqbJ6SEme/">Codex introduction</a></li><li><a href="https://www.bilibili.com/video/BV1UbMm6TEtN/">August coding-plan review</a></li></ul>
+                <ul><li><a href="https://www.bilibili.com/video/BV1XqbJ6SEme/">Watch Codex 01 · 58 min</a></li><li><a href="https://www.bilibili.com/video/BV1UbMm6TEtN/">August coding-plan review</a></li></ul>
               </details>
             </div>
           </article>
 
           <article class="project" id="api-gateway" aria-labelledby="gateway-title">
-            <div class="study network-study" id="network-study" aria-hidden="true">
-              <span class="plate-label">Group allocation · example requests</span>
-              <div class="network">
-                <div class="source">API</div>
-                <div class="routes"><i></i><i></i><i></i></div>
-                <div class="servers"><b>A <span>—</span></b><b>B <span>—</span></b><b>C <span>—</span></b></div>
-              </div>
-            </div>
+            <figure class="gateway-figure">
+              <picture>
+                <source media="(max-width: 740px)" srcset="assets/gateway-architecture-mobile.svg" width="440" height="620">
+                <img src="assets/gateway-architecture.svg" width="880" height="486" loading="lazy" alt="Request path from client through API key and group checks to the Sub2API scheduler and an eligible upstream. The reply streams back through the gateway. Active probes, request success and p95 time to first token inform Console settings for eligibility, priority and load factor. The audit log records changes and readback confirms them.">
+              </picture>
+              <figcaption><a href="assets/gateway-architecture.svg">Open full-size diagram <span aria-hidden="true">↗</span></a></figcaption>
+            </figure>
             <div class="project-copy">
               <p class="category"><i aria-hidden="true"></i>Software systems</p>
               <h3 id="gateway-title">API gateway<br> load balancing</h3>
-              <p>On OVH, Sub2API forwards requests to upstream services. Sub2API Console compares probe health, request success and time to first token to guide scheduling within each group.</p>
-              <div class="routing-controls js-control">
-                <label for="route-condition">Upstream B in this simulation</label>
-                <div class="allocation-inputs">
-                  <select id="route-condition">
-                    <option value="healthy">Healthy · equal shares</option>
-                    <option value="slow">Slow first token · reduce share</option>
-                    <option value="paused">Paused · exclude from routing</option>
-                  </select>
-                  <button class="study-button" id="route-button" type="button">Allocate 12 requests <span aria-hidden="true">→</span></button>
-                </div>
-                <p class="routing-result" id="route-status" role="status">Select a condition and allocate a sample batch.</p>
-              </div>
-              <details class="routing-note"><summary>How to read this study</summary>
-                <p>The example assigns relative shares to A, B and C. They start equal. Slowing B halves its example share, and pausing B removes it from the eligible set. Counts are calculated in your browser. In the deployed console, operators can inspect per-group priority and load factor, then check the audit trail for confirmed changes.</p>
+              <p>I operate a Sub2API gateway on OVH. The gateway checks each client’s API key, selects an eligible upstream in its group and streams the reply back. I use Sub2API Console to see which upstream handled a request and how long it took to send the first token.</p>
+              <details class="routing-note"><summary>How I check a routing change</summary>
+                <p>The console shows active probes alongside observed request success and the 95th percentile of time to first token. These measurements guide eligibility, priority and load factor within a managed group. The audit log records a scheduling write and whether reading back the setting confirmed it.</p>
               </details>
             </div>
+            <section class="gateway-demo" aria-labelledby="routing-example-title">
+              <div class="study network-study" id="network-study" aria-hidden="true">
+                <div class="network">
+                  <div class="source">API</div>
+                  <div class="routes"><i></i><i></i><i></i></div>
+                  <div class="servers"><b>A <span>—</span></b><b>B <span>—</span></b><b>C <span>—</span></b></div>
+                </div>
+              </div>
+              <div class="gateway-demo-body">
+                <h4 id="routing-example-title">Try a routing example</h4>
+                <noscript><p>Enable JavaScript to allocate a sample batch.</p></noscript>
+                <div class="routing-controls js-control">
+                  <label for="route-condition">Upstream B in this simulation</label>
+                  <div class="allocation-inputs">
+                    <select id="route-condition">
+                      <option value="healthy">Healthy · equal shares</option>
+                      <option value="slow">Slow first token · reduce share</option>
+                      <option value="paused">Paused · exclude from routing</option>
+                    </select>
+                    <button class="study-button" id="route-button" type="button">Allocate 12 requests <span aria-hidden="true">→</span></button>
+                  </div>
+                  <p class="routing-result" id="route-status" role="status">Select a condition and allocate a sample batch.</p>
+                </div>
+                <details class="routing-note"><summary>How the example allocates requests</summary>
+                  <p>In this browser simulation, A, B and C start with equal shares. Slowing B halves its example share. Pausing B removes it from the eligible set. Each batch divides 12 requests according to those shares and assigns any remaining requests to the largest fractional remainders.</p>
+                </details>
+              </div>
+            </section>
           </article>
         </div>
       </section>
