@@ -1,116 +1,43 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="robots" content="noindex">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f8f5ed">
-  <meta name="description" content="Engineering field notes by Luoge Yu, an Electrical and Electronic Engineering student at the University of Nottingham Ningbo China. Explore engineering projects and AI coding tutorials.">
-  <title>Engineering Field Notes · Luoge Yu</title>
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="stylesheet" href="style.css">
-  <script src="journal.js" defer></script>
-</head>
-<body>
-  <a class="skip" href="#main">Skip to content</a>
-  <header class="masthead" id="overview">
-    <div class="container masthead-inner">
-      <a href="#overview" class="brand" aria-label="Luoge Yu, home"><span class="brand-mark" aria-hidden="true"></span>Luoge Yu</a>
-      <nav id="main-nav" aria-label="Main navigation">
-        <a href="#work">Projects</a>
-        <a href="#ai-tutorials">Tutorials</a>
-        <a href="#about">About</a>
-      </nav>
-    </div>
-  </header>
-  <main id="main">
-    <section class="container introduction" aria-labelledby="page-title">
-      <div class="intro-copy">
-        <p class="eyebrow"><span class="ink-line" aria-hidden="true"></span> Electrical &amp; electronic engineering</p>
-        <h1 id="page-title">Engineering<br><em>field notes.</em></h1>
-        <p class="lead">I’m Luoge Yu, an engineering student in Ningbo. I build instruments, run an API gateway and publish AI coding lessons in Chinese.</p>
-        <a class="button-primary" href="#work">Explore my projects <span class="button-arrow" aria-hidden="true">↓</span></a>
-      </div>
-      <figure class="featured-plate">
-        <div class="plate-image">
-          <img src="assets/rain-gauge.webp" width="1026" height="842" fetchpriority="high" alt="Exploded concept drawing with a copper-coloured collector above a pivoting bucket.">
-        </div>
-        <figcaption>
-          <div><span class="plate-tag">Concept illustration</span><span class="plate-title">Tipping-bucket rain gauge</span></div>
-          <a href="#rain-gauge">Calibration note <span aria-hidden="true">↘</span></a>
-        </figcaption>
-      </figure>
-    </section>
-    <section class="container work-section" id="work" aria-labelledby="work-heading">
-      <div class="section-heading"><h2 id="work-heading">Project index<span>.</span></h2></div>
-      <div class="project-grid" id="project-grid">
-        <article class="project-entry" id="rain-gauge">
-          <img class="entry-image" src="assets/bucket.webp" width="759" height="366" alt="Concept sketch of the pivoting two-sided bucket.">
-          <div class="entry-text">
-            <p class="entry-type">Instrumentation</p>
-            <h3>Calibrating a tipping-bucket rain gauge</h3>
-            <p class="entry-intro">The rain gauge I worked on had a nominal volume of 2 mL per tip. At high inflow, the bucket tipped early. I calibrated the gauge with a neural network to account for that change.</p>
-            <details>
-              <summary><span>Why the bucket tipped early</span><span class="toggle" aria-hidden="true"></span></summary>
-              <div class="detail-copy">
-                <p>Water from the collector fills one side of a pivoting bucket. When the bucket tips, that side empties and the other takes its place. At high inflow, the momentum of the incoming water pushes the bucket over before it holds the full 2 mL.</p>
-                <p>I collected measurements at different inflow rates and used a neural network to fit the effective volume of a single tip, in millilitres. That volume falls nonlinearly as the flow increases. Using a fixed 2 mL for every count would overestimate the flow. Accounting for the change in volume improved my high-flow estimates.</p>
-              </div>
-            </details>
-          </div>
-        </article>
-        <article class="project-entry" id="ai-tutorials">
-          <span class="anchor-alias" id="tutorials" aria-hidden="true"></span>
-          <a href="https://www.bilibili.com/video/BV1XqbJ6SEme/" aria-label="Watch Codex 01 in Chinese on Bilibili"><img class="entry-image" src="assets/bilibili-codex-01-cover.webp" width="1280" height="720" loading="lazy" alt="Published Codex 01 cover, with a white-haired character pointing to a diagram of how an LLM generates text."></a>
-          <div class="entry-text">
-            <p class="entry-type">Teaching &amp; publishing</p>
-            <h3>Bilibili AI tutorials</h3>
-            <p class="entry-intro">I wrote and narrated <span lang="zh-CN">《认识LLM，成为能工智人》</span> for my Bilibili channel, <a class="channel-link" href="https://space.bilibili.com/3546723368568952" aria-label="Visit my Bilibili channel, 於一天"><span lang="zh-CN">於一天</span><span aria-hidden="true">↗</span></a>. I start with how a language model finishes one sentence, then ask what changes for a programmer when rewriting code becomes cheap.</p>
-            <ul class="video-links" aria-label="Watch the lessons in Chinese">
-              <li><a href="https://www.bilibili.com/video/BV1XqbJ6SEme/"><span class="play-mark" aria-hidden="true"></span>Watch Codex 01 · 58 min <span aria-hidden="true">↗</span></a></li>
-              <li><a href="https://www.bilibili.com/video/BV1UbMm6TEtN/"><span class="play-mark" aria-hidden="true"></span>August coding-plan review <span aria-hidden="true">↗</span></a></li>
-            </ul>
-            <details>
-              <summary><span>From one token to a working patch</span><span class="toggle" aria-hidden="true"></span></summary>
-              <div class="detail-copy">
-                <p><strong>Inside the model.</strong> I use “The capital of China is…” to show how a Transformer maps tokens to vectors and uses attention to weigh the preceding tokens. In the example it selects “Beijing”, adds it to the sentence, then predicts punctuation and an end token. A second diagram uses the similar directions from China to Beijing and Japan to Tokyo to illustrate how embeddings can capture a relationship.</p>
-                <p><strong>Inside a project.</strong> Copying a function takes seconds. Adapting it to a different codebase takes judgment about its callers and tests. I show Codex reading a failing test, editing <code>dates.py</code> and running <code>pytest</code> again. The failure message guides the next edit, and a developer checks whether the fix preserves the public API.</p>
-                <p><strong>The wider view.</strong> A network can distribute the same article to a thousand readers. A model can rewrite it for one reader’s question. I call this the automation of symbolic production and trace it back through earlier shifts in what machines can reproduce. The lesson closes with the role of the person who sets the task and checks the result.</p>
-              </div>
-            </details>
-          </div>
-        </article>
-        <article class="project-entry" id="api-gateway">
-          <figure class="gateway-figure">
-            <picture>
-              <source media="(max-width: 740px)" srcset="assets/gateway-architecture-mobile.svg" width="440" height="620">
-              <img src="assets/gateway-architecture.svg" width="880" height="486" loading="lazy" alt="Request path from client through API key and group checks to the Sub2API scheduler and an eligible upstream. The reply streams back through the gateway. Active probes, request success and p95 time to first token inform Console settings for eligibility, priority and load factor. The audit log records changes and readback confirms them.">
-            </picture>
-            <figcaption><a href="assets/gateway-architecture.svg">Open full-size diagram <span aria-hidden="true">↗</span></a></figcaption>
-          </figure>
-          <div class="entry-text">
-            <p class="entry-type">Software systems</p>
-            <h3>API gateway load balancing</h3>
-            <p class="entry-intro">I operate a Sub2API gateway on OVH. Each API key identifies the group a client can use. The scheduler picks an eligible upstream and the gateway streams its reply back to the client.</p>
-            <details>
-              <summary><span>How I check a routing change</span><span class="toggle" aria-hidden="true"></span></summary>
-              <div class="detail-copy">
-                <p><strong>When a healthy service feels slow.</strong> An upstream can pass a probe while some users still wait a long time for a streamed reply to begin. Sub2API Console shows probe results alongside request success rates and the 95th percentile of time to first token. That percentile describes the wait near the slow end of observed requests.</p>
-                <p><strong>How traffic moves.</strong> Sub2API forwards each request to an eligible upstream in its group. The console inspects upstream health and manages scheduling eligibility, priority and load factor for the groups under its control. A circuit breaker can take an unhealthy upstream out of rotation.</p>
-                <p><strong>Checking a scheduling change.</strong> The console’s audit trail distinguishes a scheduling change that was sent from one confirmed by reading the setting back. Request-level lookup then shows which upstream actually handled a request. Together they show whether the setting took effect and where traffic went.</p>
-              </div>
-            </details>
-          </div>
-        </article>
-      </div>
-    </section>
-    <section class="about-section" id="about" aria-labelledby="about-title">
-      <div class="container about-inner">
-        <div><p class="eyebrow">About the author</p><h2 id="about-title">Luoge Yu<span>.</span></h2></div>
-        <p>I study Electrical and Electronic Engineering at the University of Nottingham Ningbo China. Alongside my hardware and software projects, I make AI coding tutorials.</p>
-      </div>
-    </section>
-  </main>
-  <footer><div class="container footer-inner"><span>Luoge Yu · Engineering field notes</span><a href="#overview">Back to top <span aria-hidden="true">↑</span></a></div></footer>
-</body>
-</html>
+<html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="An Electrical and Electronic Engineering student project portfolio at the University of Nottingham Ningbo China."><meta name="theme-color" content="#f8f9f5"><title>EEE Portfolio — Engineering, made tangible.</title><link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="base.css"><link rel="stylesheet" href="style.css?v=original-v1"><script type="module" src="portfolio.js"></script></head>
+<body data-version="1"><a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="wrap header-inner"><a class="brand" href="#overview" aria-label="Luoge Yu portfolio home"><span class="brand-mark" aria-hidden="true">e<span>·</span></span><span>LUOGE YU / EEE</span></a><button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="main-nav"><span></span><span></span></button><nav id="main-nav" class="main-nav" aria-label="Main navigation"><a href="#work">Selected work</a><a href="#about">About & approach</a><a href="#contact" class="nav-contact">Get in touch <span aria-hidden="true">↗</span></a></nav></div></header>
+<main id="main">
+<section class="hero wrap" id="overview"><div class="hero-copy"><div class="eyebrow"><span class="green-dot"></span> ELECTRICAL & ELECTRONIC ENGINEERING</div><h1>Engineering,<br>made <span>tangible.</span></h1><p class="hero-description" data-content="intro">Electrical and Electronic Engineering student at UNNC, exploring how models, embedded systems, and AI become practical engineering tools.</p><div class="hero-actions"><a class="button button-dark" href="#work">Explore selected work <span aria-hidden="true">↘</span></a><a class="subtle-link" href="#about">A little about me <span aria-hidden="true">→</span></a></div><div class="hero-location"><span class="location-icon" aria-hidden="true">⌖</span><span data-content="institution">University of Nottingham Ningbo China</span><span class="location-divider"></span><span data-content="stage">EEE student</span></div></div>
+<div class="hero-visual" aria-label="Abstract engineering schematic: signals, systems and iteration"><div class="schematic-header"><span>FROM IDEA TO IMPLEMENTATION</span><span class="live-dot">STUDENT WORK</span></div><svg viewBox="0 0 520 390" role="img" aria-label="A connected circuit illustration"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".75" fill="#b9c9c0"/></pattern><linearGradient id="chip" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#276455"/><stop offset="1" stop-color="#153c35"/></linearGradient></defs><rect width="520" height="390" fill="url(#dots)"/><g stroke="#a7c3b7" stroke-width="1.5" fill="none"><path d="M0 110h100l50 50h70M40 300h80l70-70h45M520 100H410l-55 55h-48M520 280H395l-45-45h-48M260 0v100M280 390V280"/><path d="M0 190h165M520 200H355M135 0v60l65 65M410 390v-60l-70-70"/></g><g fill="#f4f8f2" stroke="#78a48e" stroke-width="1.5"><circle cx="100" cy="110" r="5"/><circle cx="120" cy="300" r="5"/><circle cx="410" cy="100" r="5"/><circle cx="395" cy="280" r="5"/><circle cx="135" cy="60" r="4"/></g><g transform="translate(190 125)"><rect x="-12" y="-12" width="164" height="164" rx="16" fill="#dfe9df" stroke="#bfd2c3"/><rect width="140" height="140" rx="10" fill="url(#chip)"/><g stroke="#8ab7a1" stroke-width="1"><path d="M20-22v12M40-22v12M60-22v12M80-22v12M100-22v12M120-22v12M20 152v12M40 152v12M60 152v12M80 152v12M100 152v12M120 152v12M-22 20h12M-22 40h12M-22 60h12M-22 80h12M-22 100h12M-22 120h12M152 20h12M152 40h12M152 60h12M152 80h12M152 100h12M152 120h12"/></g><path d="M32 74h18l9-27 19 49 12-30h20" stroke="#cde7bd" stroke-width="2" fill="none"/><text x="70" y="119" text-anchor="middle" font-family="Consolas,monospace" font-size="8" letter-spacing="2" fill="#b8d6c5">BUILD · TEST · REFINE</text></g><text x="29" y="53" font-family="Consolas,monospace" font-size="9" letter-spacing="1" fill="#618171">01 / SIGNALS</text><text x="380" y="348" font-family="Consolas,monospace" font-size="9" letter-spacing="1" fill="#618171">02 / SYSTEMS</text></svg><div class="schematic-footer"><span>CONCEPT</span><span class="diagram-line"></span><span>EXPERIMENT</span><span class="diagram-line"></span><span>EVIDENCE</span></div></div>
+</section>
+<div class="discipline-strip"><div class="wrap"><span>A growing body of student work</span><span>Electrical systems</span><span>AI & simulation</span><span>Engineering practice</span></div></div>
+<section class="work-section wrap" id="work"><div class="section-heading"><div><p class="section-kicker">01 — SELECTED WORK</p><h2>Ideas, built and explored.</h2></div><div id="project-filters" class="project-filters" aria-label="Filter projects"></div></div><p class="section-intro" data-content="workIntro">Selected work in instrument calibration, AI education and API gateway operation.</p><div id="results-announcement" class="sr-only" role="status" aria-live="polite"></div><div class="project-grid" id="project-grid">
+<article class="project-card" id="rain-gauge" data-category="Instrumentation">
+  <div class="project-visual project-cover"><img src="assets/rain-gauge.webp" alt="Concept illustration of a tipping-bucket rain gauge." loading="lazy">
+    <span class="visual-index">01 / Measurement</span><span class="visual-type">Instrumentation</span></div>
+  <div class="project-body"><div class="project-meta"><span>Measurement</span><span class="status-dot">Calibrated</span></div>
+    <h3>Tipping-bucket rain gauge</h3><p>A neural-network calibration for the changing volume of each tip at higher flow rates.</p><div class="tags"><span>Flow measurement</span><span>Neural networks</span></div>
+    <details><summary><span>Project notes</span><span class="detail-plus" aria-hidden="true">+</span></summary>
+    <div class="project-details"><h4>Project focus</h4><p>The nominal tipping volume is 2 mL. At high inflow, the momentum of incoming water tips the bucket early. Counting every pulse as 2 mL overestimates the flow.</p><h4>Approach</h4>
+    <ul class="evidence-list"><li>I sampled the gauge at different flow rates and fitted the effective millilitres per tip with a neural network.</li><li>Multiplying the tip rate by the fitted volume accounts for the nonlinear drop in tipping volume and improves the high-flow estimate.</li></ul><div class="project-links"></div></div></details>
+  </div></article>
+<article class="project-card" id="ai-tutorials" data-category="Teaching">
+  <div class="project-visual project-cover"><img src="assets/bilibili-codex-01-cover.webp" alt="Original Bilibili cover for 认识 LLM，成为能工智人." loading="lazy">
+    <span class="visual-index">02 / Publishing</span><span class="visual-type">Teaching</span></div>
+  <div class="project-body"><div class="project-meta"><span>Publishing</span><span class="status-dot">Published</span></div>
+    <h3>Bilibili AI tutorials</h3><p>Chinese-language lessons on how language models generate text and how people use them to write and check code.</p><div class="tags"><span>Language models</span><span>AI coding</span></div>
+    <details><summary><span>Project notes</span><span class="detail-plus" aria-hidden="true">+</span></summary>
+    <div class="project-details"><h4>Project focus</h4><p>In 认识 LLM，成为能工智人, I explain a language model at two scales, from choosing the next token to changing the cost of adapting written work and software.</p><h4>Approach</h4>
+    <ul class="evidence-list"><li>Vectors and attention connect context to the next-token prediction.</li><li>In a coding example, a failing test guides an edit. The developer defines the constraints and checks the result.</li></ul><div class="project-links"><a class="text-link" href="https://www.bilibili.com/video/BV1XqbJ6SEme/">Watch Codex 01 <span aria-hidden="true">↗</span></a><a class="text-link" href="https://www.bilibili.com/video/BV1UbMm6TEtN/">August coding-plan review <span aria-hidden="true">↗</span></a><a class="text-link" href="https://space.bilibili.com/3546723368568952">Bilibili channel <span aria-hidden="true">↗</span></a></div></div></details>
+  </div></article>
+<article class="project-card" id="api-gateway" data-category="Software systems">
+  <div class="project-visual project-cover"><img src="assets/gateway-architecture.svg" alt="Sub2API architecture showing clients, the scheduler, upstream services, telemetry and console feedback." loading="lazy">
+    <span class="visual-index">03 / Infrastructure</span><span class="visual-type">Software systems</span></div>
+  <div class="project-body"><div class="project-meta"><span>Infrastructure</span><span class="status-dot">Operational</span></div>
+    <h3>API gateway load balancing</h3><p>Routing requests to eligible upstream services and reviewing their behaviour in Sub2API Console on OVH.</p><div class="tags"><span>Sub2API</span><span>Load balancing</span></div>
+    <details><summary><span>Project notes</span><span class="detail-plus" aria-hidden="true">+</span></summary>
+    <div class="project-details"><h4>Project focus</h4><p>The gateway checks the client key, selects an eligible upstream within its group and streams the reply back to the client.</p><h4>Approach</h4>
+    <ul class="evidence-list"><li>I review active probes, request success and 95th-percentile time to first token before adjusting priority or load factor.</li><li>The audit log records scheduling changes, and readback confirms which settings took effect.</li></ul><div class="project-links"><a class="text-link" href="assets/gateway-architecture.svg">Open full-size architecture <span aria-hidden="true">↗</span></a></div></div></details>
+  </div></article>
+</div></section>
+<section class="about-section" id="about"><div class="wrap about-grid"><div class="about-heading"><p class="section-kicker">02 — ABOUT & APPROACH</p><h2>Curiosity.<br>With a circuit<br>to close.</h2><p class="about-caption">A learning portfolio, built around the work.</p><div class="about-stamp"><span id="project-count">03</span><div>PROJECT AREAS<br><strong>One engineering mindset.</strong></div></div></div><div class="about-content"><div id="about-copy"><p>I study Electrical and Electronic Engineering at the University of Nottingham Ningbo China. My project interests connect electrical machines, embedded systems, and intelligent control.</p><p>The work here sits between modelling and implementation: understanding a system, checking its behaviour, and making the next iteration more useful.</p></div><div class="skill-groups" id="skill-groups"><article class="skill-group"><span class="skill-number">01</span><div><h3>Model &amp; simulate</h3><p>Project context: electrical-machine modelling and feedback-control simulation.</p><div class="tags"><span>MATLAB</span><span>dq modelling</span><span>Lookup tables</span><span>PI control</span></div></div></article><article class="skill-group"><span class="skill-number">02</span><div><h3>Build &amp; connect</h3><p>Project context: embedded diagnostic prototypes and sensor interfaces.</p><div class="tags"><span>Wio Terminal</span><span>Embedded C++</span><span>I²C</span><span>SHT4x</span></div></div></article><article class="skill-group"><span class="skill-number">03</span><div><h3>Explore &amp; evaluate</h3><p>Project context: AI-assisted development and vehicle-control experiments.</p><div class="tags"><span>Python</span><span>LLM interfaces</span><span>IDM simulation</span><span>Time–space diagrams</span></div></div></article></div></div></div></section>
+<section class="contact-section wrap" id="contact"><div><p class="section-kicker">03 — WHAT'S NEXT</p><h2>Better questions.<br>More useful things.</h2><p data-content="contact.text">Interested in the space where electrical engineering meets practical computing? There is always another useful question to explore.</p></div><div id="contact-links" class="contact-links"><span class="contact-note">Contact details coming soon.</span></div></section>
+</main>
+<footer class="site-footer"><div class="wrap footer-bottom"><div class="footer-brand">LUOGE YU / EEE <span>© 2026</span></div><p class="development-note">Version 1 · AI-generated design.</p><a href="#overview" class="back-top">Back to top ↑</a></div><div class="wrap last-update">LAST CONTENT REVIEW <span id="updated-date">21 NOV 2026</span></div></footer>
+</body></html>
