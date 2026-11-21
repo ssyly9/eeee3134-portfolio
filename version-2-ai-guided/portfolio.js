@@ -14,6 +14,81 @@ function setAssembly(assembled) {
 assemblyButton.addEventListener("click", () => setAssembly(true));
 explodedButton.addEventListener("click", () => setAssembly(false));
 
+const sceneButtons = document.querySelectorAll(".scene-picker button");
+const scenes = {
+  rain: { title: "Tipping-bucket rain gauge", medium: "Concept rendering", target: "#rain-gauge" },
+  lesson: { title: "Inside a language model", medium: "Published lesson cover", target: "#ai-tutorials" },
+  gateway: { title: "Sub2API on OVH", medium: "System architecture", target: "#api-gateway" }
+};
+const sceneLink = byId("scene-link");
+for (const button of sceneButtons) {
+  button.addEventListener("click", () => {
+    const key = button.dataset.scene;
+    const scene = scenes[key];
+    instrument.dataset.scene = key;
+    instrument.querySelector(".lesson-art").hidden = key !== "lesson";
+    instrument.querySelector(".gateway-art").hidden = key !== "gateway";
+    byId("scene-medium").textContent = scene.medium;
+    sceneLink.querySelector("strong").textContent = scene.title;
+    sceneLink.setAttribute("href", scene.target);
+    sceneButtons.forEach(item => item.setAttribute("aria-pressed", String(item === button)));
+  });
+}
+
+// A family of copper curves shifts with native scroll. Idle pages do no drawing.
+const field = document.querySelector(".current-field");
+const brush = field.getContext("2d");
+if (brush) {
+  let frame = 0;
+  function paintField() {
+    frame = 0;
+    const bounds = field.getBoundingClientRect();
+    const width = bounds.width;
+    const height = bounds.height;
+    if (!width || !height || bounds.bottom <= 0 || bounds.top >= innerHeight) return;
+    const density = Math.min(devicePixelRatio || 1, 1.5);
+    const pixelsX = Math.round(width * density);
+    const pixelsY = Math.round(height * density);
+    if (field.width !== pixelsX || field.height !== pixelsY) {
+      field.width = pixelsX;
+      field.height = pixelsY;
+    }
+    brush.setTransform(density, 0, 0, density, 0, 0);
+    brush.clearRect(0, 0, width, height);
+    const scroll = motion.matches ? 0 : Math.max(0, -bounds.top / height);
+    for (let i = 0; i < 37; i++) {
+      const u = i / 36;
+      brush.beginPath();
+      brush.moveTo(-.07 * width, (.60 + .67 * u) * height);
+      brush.bezierCurveTo(.37 * width, (1.35 - .48*u - .09*scroll) * height,
+        .53 * width, (.56 + .30*u - .14*scroll) * height,
+        1.06 * width, (-.25 + .68*u + .06*scroll) * height);
+      brush.strokeStyle = i % 4 === 0 ? "rgba(255,241,205,.57)" : "rgba(134,71,41,.21)";
+      brush.lineWidth = i % 4 === 0 ? 1.3 : .8;
+      brush.stroke();
+    }
+  }
+  function scheduleField() {
+    if (!frame) frame = requestAnimationFrame(paintField);
+  }
+  window.addEventListener("resize", scheduleField);
+  window.addEventListener("scroll", () => { if (!motion.matches) scheduleField(); }, { passive: true });
+  motion.addEventListener("change", scheduleField);
+  scheduleField();
+}
+
+if ("IntersectionObserver" in window) {
+  const arrivals = new IntersectionObserver(entries => {
+    for (const entry of entries) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("art-enter");
+        arrivals.unobserve(entry.target);
+      }
+    }
+  }, { threshold: .08 });
+  document.querySelectorAll(".project").forEach(project => arrivals.observe(project));
+}
+
 const stage = instrument.querySelector(".stage");
 stage.addEventListener("pointermove", (event) => {
   if (event.pointerType !== "mouse" || motion.matches) return;

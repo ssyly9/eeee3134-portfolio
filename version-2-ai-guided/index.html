@@ -9,8 +9,8 @@
   <title>Luoge Yu — Engineering Portfolio</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preload" href="assets/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="style.css">
-  <script src="portfolio.js" defer></script>
+  <link rel="stylesheet" href="style.css?v=studio-2">
+  <script src="portfolio.js?v=studio-2" defer></script>
 </head>
 <body data-version="2">
   <a class="skip" href="#main">Skip to content</a>
@@ -23,13 +23,14 @@
   </header>
   <main id="main" tabindex="-1">
     <section class="hero shell" aria-labelledby="hero-title">
+      <canvas class="current-field" aria-hidden="true"></canvas>
       <div class="hero-copy">
         <p class="eyebrow"><i class="short-rule" aria-hidden="true"></i>Engineering portfolio</p>
-        <h1 id="hero-title">Luoge<br> Yu<span>.</span></h1>
+        <h1 id="hero-title">Luoge<br> <b>Yu</b><span>.</span></h1>
         <p class="intro">Electrical and electronic engineering student at the University of Nottingham Ningbo China.</p>
         <a class="cta" href="#work">Explore my work <span aria-hidden="true">↓</span></a>
       </div>
-      <figure class="instrument" id="instrument">
+      <figure class="instrument" id="instrument" data-scene="rain">
         <div class="stage">
           <div class="lens" aria-hidden="true"><i></i></div>
           <div class="object" role="img" aria-label="Copper-coloured concept rendering of a tipping-bucket rain gauge, showing its collector, rocking bucket and base.">
@@ -40,15 +41,25 @@
           </div>
           <div class="annotation collector" aria-hidden="true"><i></i>Collector</div>
           <div class="annotation pivot" aria-hidden="true"><i></i>Pivot</div>
+          <div class="scene-art lesson-art" hidden><img src="assets/bilibili-codex-01-cover.webp" width="1280" height="720" alt="Published cover of my Chinese lesson on how an LLM works."></div>
+          <div class="scene-art gateway-art" hidden><picture>
+            <source media="(max-width: 740px)" srcset="assets/gateway-architecture-mobile.svg">
+            <img src="assets/gateway-architecture.svg" width="880" height="486" alt="Sub2API request path and Console feedback loop.">
+          </picture></div>
         </div>
         <figcaption>
-          <div><span class="micro">Concept rendering</span><strong>Tipping-bucket rain gauge</strong></div>
+          <div><span class="micro" id="scene-medium">Concept rendering</span><a class="scene-link" id="scene-link" href="#rain-gauge"><strong>Tipping-bucket rain gauge</strong><span aria-hidden="true"> ↘</span></a></div>
           <div class="view-control js-control" role="group" aria-label="Rain gauge view">
             <button id="exploded" type="button" aria-pressed="true">Exploded</button>
             <button id="assembly" type="button" aria-pressed="false"><span id="assembly-label">Assembled</span></button>
           </div>
         </figcaption>
       </figure>
+      <div class="scene-picker js-control" role="group" aria-label="Featured project preview">
+        <button type="button" data-scene="rain" aria-pressed="true" aria-controls="instrument">Rain gauge</button>
+        <button type="button" data-scene="lesson" aria-pressed="false" aria-controls="instrument">AI tutorials</button>
+        <button type="button" data-scene="gateway" aria-pressed="false" aria-controls="instrument">API gateway</button>
+      </div>
     </section>
 
     <div id="portfolio-body">
